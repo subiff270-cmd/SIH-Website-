@@ -227,10 +227,10 @@ export const HomePage: React.FC = () => {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-display tracking-tight leading-none drop-shadow-[0_0_25px_rgba(6,182,212,0.3)]">
-            Civic<span className="text-cyan-400">AI</span> Smart City Operating System
+            {t.heroTitleMain}
           </h1>
           <p className="text-slate-400 text-xs sm:text-sm font-mono max-w-2xl mx-auto leading-relaxed">
-            Snap photos of potholes, garbage, water leaks, or broken lights. AI automatically classifies defects, verifies GPS, and dispatches municipal crews.
+            {t.heroSub}
           </p>
 
           {/* DYNAMIC ROLE PORTAL CTA BUTTON */}
@@ -255,13 +255,13 @@ export const HomePage: React.FC = () => {
                   to="/report"
                   className="btn-neon px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 text-white font-bold text-sm shadow-glowCyan flex items-center gap-2"
                 >
-                  <PlusCircle className="w-5 h-5" /> Snap Photo & Report Civic Issue
+                  <PlusCircle className="w-5 h-5" /> {t.ctaReport}
                 </Link>
                 <Link
                   to="/dashboard/citizen"
                   className="px-6 py-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white font-bold text-xs font-mono flex items-center gap-2"
                 >
-                  View My Reported Tickets Progress →
+                  {t.ctaTrack}
                 </Link>
               </>
             )}
@@ -272,25 +272,25 @@ export const HomePage: React.FC = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
           <div className="glass-card p-5 rounded-3xl border border-cyan-500/30 text-center space-y-1 shadow-glowCyan">
             <Cpu className="w-6 h-6 text-cyan-400 mx-auto" />
-            <span className="text-[10px] text-slate-400 block uppercase">AI TRIAGE ACCURACY</span>
+            <span className="text-[10px] text-slate-400 block uppercase">{t.statTriageAcc}</span>
             <span className="text-xl font-extrabold text-cyan-300">96.8% Precision</span>
           </div>
 
           <div className="glass-card p-5 rounded-3xl border border-emerald-500/30 text-center space-y-1 shadow-glowEmerald">
             <CheckCircle2 className="w-6 h-6 text-emerald-400 mx-auto" />
-            <span className="text-[10px] text-slate-400 block uppercase">AVG RESOLUTION SPEED</span>
+            <span className="text-[10px] text-slate-400 block uppercase">{t.statResolutionSpeed}</span>
             <span className="text-xl font-extrabold text-emerald-300">1.2 Days SLA</span>
           </div>
 
           <div className="glass-card p-5 rounded-3xl border border-purple-500/30 text-center space-y-1 shadow-glowPurple">
             <Building2 className="w-6 h-6 text-purple-400 mx-auto" />
-            <span className="text-[10px] text-slate-400 block uppercase">MUNICIPAL WARDS COVERED</span>
+            <span className="text-[10px] text-slate-400 block uppercase">{t.statWardsCovered}</span>
             <span className="text-xl font-extrabold text-purple-300">32 City Zones</span>
           </div>
 
           <div className="glass-card p-5 rounded-3xl border border-amber-500/30 text-center space-y-1 shadow-glowCyan">
             <Award className="w-6 h-6 text-amber-400 mx-auto" />
-            <span className="text-[10px] text-slate-400 block uppercase">REWARDS DISPATCHED</span>
+            <span className="text-[10px] text-slate-400 block uppercase">{t.statRewards}</span>
             <span className="text-xl font-extrabold text-amber-300">₹4.2 Lakh Rebates</span>
           </div>
         </div>

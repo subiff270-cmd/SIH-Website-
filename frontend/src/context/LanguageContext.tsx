@@ -30,6 +30,14 @@ type TranslationKeys = {
   language: string;
   heroBadge: string;
   heroTitle: string;
+  heroTitleMain: string;
+  heroSub: string;
+  ctaReport: string;
+  ctaTrack: string;
+  statTriageAcc: string;
+  statResolutionSpeed: string;
+  statWardsCovered: string;
+  statRewards: string;
 
   // Report Issue Page
   reportTitle: string;
@@ -117,6 +125,14 @@ const en: TranslationKeys = {
   language: 'Language',
   heroBadge: 'AI Powered Crowdsourced Civic Issue Triage',
   heroTitle: 'Report Local Civic Issues. AI Routes to Officers & Workers Instantaneously.',
+  heroTitleMain: 'CivicAI Smart City Operating System',
+  heroSub: 'Snap photos of potholes, garbage, water leaks, or broken lights. AI automatically classifies defects, verifies GPS, and dispatches municipal crews.',
+  ctaReport: 'Snap Photo & Report Civic Issue',
+  ctaTrack: 'View My Reported Tickets Progress →',
+  statTriageAcc: 'AI TRIAGE ACCURACY',
+  statResolutionSpeed: 'AVG RESOLUTION SPEED',
+  statWardsCovered: 'MUNICIPAL WARDS COVERED',
+  statRewards: 'REWARDS DISPATCHED',
 
   reportTitle: 'Report a Civic Issue',
   reportSubtitle: 'Upload your real camera photo, record voice notes, and let CivicAI auto-detect category & merge duplicates.',
@@ -199,6 +215,14 @@ const hi: TranslationKeys = {
   language: 'भाषा',
   heroBadge: 'एआई संचालित जनसहयोग नागरिक समस्या निवारण',
   heroTitle: 'स्थानीय नागरिक समस्याओं की रिपोर्ट करें। AI तुरंत अधिकारियों और कर्मचारियों को भेजता है।',
+  heroTitleMain: 'CivicAI स्मार्ट सिटी ऑपरेटिंग सिस्टम',
+  heroSub: 'गड्ढों, कचरे, पानी के रिसाव या टूटी लाइटों की तस्वीरें लें। AI स्वतः दोषों को वर्गीकृत करता है, GPS की पुष्टि करता है, और कर्मचारियों को भेजता है।',
+  ctaReport: 'फ़ोटो लें और नागरिक समस्या रिपोर्ट करें',
+  ctaTrack: 'मेरी रिपोर्ट की गई टिकटों की प्रगति देखें →',
+  statTriageAcc: 'एआई वर्गीकरण सटीकता',
+  statResolutionSpeed: 'औसत समाधान गति',
+  statWardsCovered: 'नगर निगम वार्ड कवर किए गए',
+  statRewards: 'नागरिक पुरस्कार वितरित',
 
   reportTitle: 'नागरिक समस्या की रिपोर्ट करें',
   reportSubtitle: 'अपनी असली कैमरा फोटो अपलोड करें, वॉइस नोट रिकॉर्ड करें, और CivicAI को श्रेणी पहचानने दें।',
@@ -281,6 +305,14 @@ const ta: TranslationKeys = {
   language: 'மொழி',
   heroBadge: 'AI இயங்கும் மக்கள் கூட்ட மூலக் குடிமைப் பிரச்சனை தீர்வு',
   heroTitle: 'உள்ளூர் குடிமைப் பிரச்சினைகளைப் புகாரளிக்கவும். AI உடனடியாக அதிகாரிகளுக்கும் பணியாளர்களுக்கும் அனுப்புகிறது.',
+  heroTitleMain: 'CivicAI ஸ்மார்ட் சிட்டி இயங்குதளம்',
+  heroSub: 'குழிகள், குப்பைகள், நீர் கசிவு அல்லது உடைந்த விளக்குகளைப் படம் பிடிக்கவும். AI தானாகவே குறைபாடுகளை வகைப்படுத்தி, அதிகாரிகளுக்கு அனுப்புகிறது.',
+  ctaReport: 'படம் எடுத்து குடிமைப் பிரச்சினையைப் புகாரளிக்கவும்',
+  ctaTrack: 'எனது புகார்களின் முன்னேற்றத்தைக் காண்க →',
+  statTriageAcc: 'AI வகைப்பாடு துல்லியம்',
+  statResolutionSpeed: 'சராசரி தீர்வு வேகம்',
+  statWardsCovered: 'உள்ளடக்கப்பட்ட நகராட்சி வார்டுகள்',
+  statRewards: 'வழங்கப்பட்ட குடிமக்கள் வெகுமதிகள்',
 
   reportTitle: 'குடிமைப் பிரச்சினையைப் புகார் செய்யுங்கள்',
   reportSubtitle: 'உங்கள் உண்மையான கேமரா புகைப்படத்தைப் பதிவேற்றுங்கள், குரல் குறிப்புகளைப் பதிவு செய்யுங்கள்.',
@@ -363,6 +395,14 @@ const te: TranslationKeys = {
   language: 'భాష',
   heroBadge: 'AI ఆధారిత పౌర సమస్య పరిష్కారం',
   heroTitle: 'స్థానిక పౌర సమస్యలను నివేదించండి. AI తక్షణమే అధికారులకు మరియు వర్కర్లకు పంపుతుంది.',
+  heroTitleMain: 'CivicAI స్మార్ట్ సిటీ ఆపరేటింగ్ సిస్టమ్',
+  heroSub: 'గొయ్యిలు, చెత్త, నీటి లీకేజీలు లేదా విరిగిన లైట్ల ఫోటోలు తీయండి. AI స్వయంచాలకంగా లోపాలను వర్గీకరిస్తుంది మరియు నివేదిస్తుంది.',
+  ctaReport: 'ఫోటో తీసి పౌర సమస్యను నివేదించండి',
+  ctaTrack: 'నా సమస్యల పురోగతిని చూడండి →',
+  statTriageAcc: 'AI వర్గీకరణ ఖచ్చితత్వం',
+  statResolutionSpeed: 'సగటు పరిష్కార వేగం',
+  statWardsCovered: 'కవర్ చేయబడిన మున్సిపల్ వార్డులు',
+  statRewards: 'పంపిణీ చేసిన పౌర బహుమతులు',
 
   reportTitle: 'పౌర సమస్యను నివేదించండి',
   reportSubtitle: 'మీ నిజమైన కెమెరా ఫోటోను అప్‌లోడ్ చేయండి, వాయిస్ నోట్‌లు రికార్డ్ చేయండి.',
@@ -435,54 +475,50 @@ const te: TranslationKeys = {
 const bn: TranslationKeys = { ...en,
   home: 'হোম', cityTwin: '3D সিটি টুইন', predictiveAi: 'পূর্বাভাস AI', liveMap: 'লাইভ মানচিত্র', reportIssue: 'অভিযোগ দায়ের করুন',
   heroBadge: 'AI পরিচালিত নাগরিক সমস্যা সমাধান', heroTitle: 'স্থানীয় নাগরিক সমস্যাগুলি জানান। AI সঙ্গে সঙ্গে কর্মকর্তাদের কাছে পাঠায়।',
+  heroTitleMain: 'CivicAI স্মার্ট সিটি অপারেটিং সিস্টেম', heroSub: 'গর্ত, আবর্জনা, জল ফুটো বা ভাঙা আলোর ছবি তুলুন। AI স্বয়ংক্রিয়ভাবে শ্রেণীবদ্ধ করে।',
+  ctaReport: 'ছবি তুলুন এবং নাগরিক সমস্যা জানান', ctaTrack: 'আমার টিকিটের অগ্রগতি দেখুন →',
+  statTriageAcc: 'AI শ্রেণীকরণ নির্ভুলতা', statResolutionSpeed: 'গড় সমাধানের গতি', statWardsCovered: 'আওতাভুক্ত পৌর ওয়ার্ড', statRewards: 'বিতরণ করা নাগরিক পুরষ্কার',
   signIn: 'সাইন ইন', signOut: 'সাইন আউট', reportTitle: 'নাগরিক সমস্যা জানান',
-  submitTicket: 'টিকিট জমা দিন ও বিভাগে পাঠান', anonymousMode: 'বেনামী মোড',
-  workerPortal: 'ফিল্ড ওয়ার্কার পোর্টাল', citizenPortal: 'নাগরিক ড্যাশবোর্ড',
-  officerPortal: 'কর্মকর্তা কমান্ড সেন্টার', approve: 'অনুমোদন', reject: 'প্রত্যাখ্যান',
-  fakeDetected: 'নকল অভিযোগ সনাক্ত — জমা বন্ধ', notCivicIssue: 'এটি নাগরিক সমস্যা নয়',
-  verificationPassed: 'AI যাচাই সফল — ত্রুটি মুছে ফেলা হয়েছে!', verificationFailed: 'AI যাচাই ব্যর্থ — ত্রুটি এখনও আছে!',
 };
 
 // Marathi
 const mr: TranslationKeys = { ...en,
   home: 'मुख्यपृष्ठ', cityTwin: '3D सिटी ट्विन', predictiveAi: 'पूर्वानुमान AI', liveMap: 'लाइव्ह नकाशा', reportIssue: 'तक्रार नोंदवा',
   heroBadge: 'एआय संचलित नागरिक समस्या निवारण', heroTitle: 'स्थानिक नागरी समस्यांची नोंद करा. AI त्वरित अधिकारी आणि कामगारांकडे पाठवते.',
+  heroTitleMain: 'CivicAI स्मार्ट सिटी ऑपरेटिंग सिस्टिम', heroSub: 'खड्डे, कचरा, पाण्याचे लिकेज किंवा तुटलेल्या दिव्यांचे फोटो काढा. AI आपोआप वर्गीकरण करते.',
+  ctaReport: 'फोटो काढा आणि नागरी समस्या नोंदवा', ctaTrack: 'माझ्या तक्रारींची प्रगती पहा →',
+  statTriageAcc: 'एआय वर्गीकरण अचूकता', statResolutionSpeed: 'सरासरी निवारण वेग', statWardsCovered: 'समाविष्ट नागरी वॉर्ड', statRewards: 'वितरित केलेले नागरिक पुरस्कार',
   signIn: 'साइन इन', signOut: 'साइन आउट', reportTitle: 'नागरी समस्या नोंदवा',
-  submitTicket: 'तिकीट सबमिट करा आणि विभागाला पाठवा', anonymousMode: 'अनामिक मोड',
-  workerPortal: 'फील्ड कामगार पोर्टल', citizenPortal: 'नागरिक डॅशबोर्ड',
-  officerPortal: 'अधिकारी कमांड सेंटर', approve: 'मंजूर', reject: 'नाकारा',
-  fakeDetected: 'बनावट तक्रार आढळली — सबमिशन ब्लॉक', notCivicIssue: 'ही नागरी समस्या नाही',
-  verificationPassed: 'AI पडताळणी यशस्वी — दोष दूर!', verificationFailed: 'AI पडताळणी अयशस्वी — दोष अजूनही आहे!',
 };
 
 // Gujarati
 const gu: TranslationKeys = { ...en,
   home: 'હોમ', cityTwin: '3D સિટી ટ્વિન', predictiveAi: 'પૂર્વાનુમાન AI', liveMap: 'લાઇવ નકશો', reportIssue: 'ફરિયાદ નોંધાવો',
   heroBadge: 'AI સંચાલિત નાગરિક સમસ્યા નિવારણ', heroTitle: 'સ્થાનિક નાગરિક સમસ્યાઓની જાણ કરો. AI તરત જ અધિકારીઓ અને કામદારોને મોકલે છે.',
+  heroTitleMain: 'CivicAI સ્માર્ટ સિટી ઓપરેટિંગ સિસ્ટમ', heroSub: 'ખાડાઓ, કચરો, પાણીના લીકેજ અથવા તૂટેલી લાઈટોના ફોટા પાડો. AI આપમેળે વર્ગીકૃત કરે છે.',
+  ctaReport: 'ફોટો પાડો અને નાગરિક સમસ્યાની જાણ કરો', ctaTrack: 'મારી ફરિયાદોની પ્રગતિ જુઓ →',
+  statTriageAcc: 'AI વર્ગીકરણ સચોટતા', statResolutionSpeed: 'સરેરાશ નિવારણ ઝડપ', statWardsCovered: 'આવરી લેવાયેલ પાલિકા વોર્ડ', statRewards: 'વિતરિત કરેલ નાગરિક ઈનામો',
   signIn: 'સાઇન ઇન', signOut: 'સાઇન આઉટ', reportTitle: 'નાગરિક સમસ્યાની જાણ કરો',
-  submitTicket: 'ટિકિટ સબમિટ કરો અને વિભાગને મોકલો', anonymousMode: 'અનામિક મોડ',
-  workerPortal: 'ફિલ્ડ વર્કર પોર્ટલ', citizenPortal: 'નાગરિક ડેશબોર્ડ',
-  officerPortal: 'અધિકારી કમાન્ડ સેન્ટર', approve: 'મંજૂર', reject: 'નામંજૂર',
 };
 
 // Kannada
 const kn: TranslationKeys = { ...en,
   home: 'ಮುಖಪುಟ', cityTwin: '3D ಸಿಟಿ ಟ್ವಿನ್', predictiveAi: 'ಪೂರ್ವಸೂಚನೆ AI', liveMap: 'ಲೈವ್ ನಕ್ಷೆ', reportIssue: 'ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ',
   heroBadge: 'AI ಚಾಲಿತ ನಾಗರಿಕ ಸಮಸ್ಯೆ ಪರಿಹಾರ', heroTitle: 'ಸ್ಥಾನಿಕ ನಾಗರಿಕ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ. AI ತಕ್ಷಣವೇ ರವಾನಿಸುತ್ತದೆ.',
+  heroTitleMain: 'CivicAI ಸ್ಮಾರ್ಟ್ ಸಿಟಿ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್', heroSub: 'ಗುಂಡಿಗಳು, ಕಸ, ನೀರು ಸೋರಿಕೆ ಅಥವಾ ಮುರಿದ ದೀಪಗಳ ಫೋಟೋ ತೆಗೆಯಿರಿ.',
+  ctaReport: 'ಫೋಟೋ ತೆಗೆದು ನಾಗರಿಕ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ', ctaTrack: 'ನನ್ನ ದೂರುಗಳ ಪ್ರಗತಿಯನ್ನು ವೀಕ್ಷಿಸಿ →',
+  statTriageAcc: 'AI ವರ್ಗೀಕರಣ ನಿಖರತೆ', statResolutionSpeed: 'ಸರಾಸರಿ ಪರಿಹಾರ ವೇಗ', statWardsCovered: 'ಒಳಪಟ್ಟ ಪುರಸಭೆ ವಾರ್ಡ್‌ಗಳು', statRewards: 'ವಿಭಾಗಿಸಿದ ನಾಗರಿಕ ಬಹುಮಾನಗಳು',
   signIn: 'ಸೈನ್ ಇನ್', signOut: 'ಸೈನ್ ಔಟ್', reportTitle: 'ನಾಗರಿಕ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ',
-  submitTicket: 'ಟಿಕೆಟ್ ಸಲ್ಲಿಸಿ ಮತ್ತು ಇಲಾಖೆಗೆ ಕಳುಹಿಸಿ', anonymousMode: 'ಅನಾಮಧೇಯ ಮೋಡ್',
-  workerPortal: 'ಕ್ಷೇತ್ರ ಕಾರ್ಮಿಕ ಪೋರ್ಟಲ್', citizenPortal: 'ನಾಗರಿಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್',
-  officerPortal: 'ಅಧಿಕಾರಿ ಕಮಾಂಡ್ ಸೆಂಟರ್',
 };
 
 // Malayalam
 const ml: TranslationKeys = { ...en,
   home: 'ഹോം', cityTwin: '3D സിറ്റി ട്വിൻ', predictiveAi: 'പ്രവചന AI', liveMap: 'ലൈവ് മാപ്പ്', reportIssue: 'പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
   heroBadge: 'AI അധിഷ്ഠിത പൗരപ്രശ്ന പരിഹാരം', heroTitle: 'പ്രാദേശിക പൗരപ്രശ്നങ്ങൾ റിപ്പോർട്ട് ചെയ്യുക. AI തൽക്ഷണം കൈമാറുന്നു.',
+  heroTitleMain: 'CivicAI സ്മാർട്ട് സിറ്റി ഓപ്പറേറ്റിംഗ് സിസ്റ്റം', heroSub: 'കുഴികൾ, മാലിന്യങ്ങൾ, ജലചോർച്ച എന്നിവയുടെ ചിത്രങ്ങൾ എടുക്കുക.',
+  ctaReport: 'ചിത്രമെടുത്ത് പൗരപ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക', ctaTrack: 'എന്റെ റിപ്പോർട്ടുകളുടെ പുരോഗതി കാണുക →',
+  statTriageAcc: 'AI തരംതിരിക്കൽ കൃത്യത', statResolutionSpeed: 'ശരാശരി പരിഹാര വേഗത', statWardsCovered: 'ഉൾപ്പെടുത്തിയ മുൻസിപ്പൽ വാർഡുകൾ', statRewards: 'വിതരണം ചെയ്ത പൗര പുരസ്കാരങ്ങൾ',
   signIn: 'സൈൻ ഇൻ', signOut: 'സൈൻ ഔട്ട്', reportTitle: 'സിവിക് പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
-  submitTicket: 'ടിക്കറ്റ് സമർപ്പിച്ച് വകുപ്പിലേക്ക് അയയ്ക്കുക', anonymousMode: 'അജ്ഞാത മോഡ്',
-  workerPortal: 'ഫീൽഡ് വർക്കർ പോർട്ടൽ', citizenPortal: 'പൗരൻ ഡാഷ്ബോർഡ്',
-  officerPortal: 'ഓഫീസർ കമാൻഡ് സെന്റർ',
 };
 
 const translations: Record<LangCode, TranslationKeys> = {
