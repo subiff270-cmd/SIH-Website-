@@ -17,9 +17,10 @@ export const languageNames: Record<LangCode, string> = {
 
 // Translation keys used across the app
 type TranslationKeys = {
-  // Navbar
+  // Navbar & Headings
   home: string;
   cityTwin: string;
+  predictiveAi: string;
   liveMap: string;
   reportIssue: string;
   signIn: string;
@@ -27,6 +28,8 @@ type TranslationKeys = {
   switchRole: string;
   myDashboard: string;
   language: string;
+  heroBadge: string;
+  heroTitle: string;
 
   // Report Issue Page
   reportTitle: string;
@@ -104,6 +107,7 @@ type TranslationKeys = {
 const en: TranslationKeys = {
   home: 'Home',
   cityTwin: '3D City Twin',
+  predictiveAi: 'Predictive AI',
   liveMap: 'Live Map',
   reportIssue: 'Report Issue',
   signIn: 'Sign In',
@@ -111,6 +115,8 @@ const en: TranslationKeys = {
   switchRole: 'Switch Demo Role Portal (3 Roles)',
   myDashboard: 'My Dashboard',
   language: 'Language',
+  heroBadge: 'AI Powered Crowdsourced Civic Issue Triage',
+  heroTitle: 'Report Local Civic Issues. AI Routes to Officers & Workers Instantaneously.',
 
   reportTitle: 'Report a Civic Issue',
   reportSubtitle: 'Upload your real camera photo, record voice notes, and let CivicAI auto-detect category & merge duplicates.',
@@ -183,6 +189,7 @@ const en: TranslationKeys = {
 const hi: TranslationKeys = {
   home: 'होम',
   cityTwin: '3D सिटी ट्विन',
+  predictiveAi: 'पूर्वानुमानित AI',
   liveMap: 'लाइव मैप',
   reportIssue: 'शिकायत दर्ज करें',
   signIn: 'साइन इन',
@@ -190,6 +197,8 @@ const hi: TranslationKeys = {
   switchRole: 'डेमो भूमिका बदलें (3 भूमिकाएँ)',
   myDashboard: 'मेरा डैशबोर्ड',
   language: 'भाषा',
+  heroBadge: 'एआई संचालित जनसहयोग नागरिक समस्या निवारण',
+  heroTitle: 'स्थानीय नागरिक समस्याओं की रिपोर्ट करें। AI तुरंत अधिकारियों और कर्मचारियों को भेजता है।',
 
   reportTitle: 'नागरिक समस्या की रिपोर्ट करें',
   reportSubtitle: 'अपनी असली कैमरा फोटो अपलोड करें, वॉइस नोट रिकॉर्ड करें, और CivicAI को श्रेणी पहचानने दें।',
@@ -262,6 +271,7 @@ const hi: TranslationKeys = {
 const ta: TranslationKeys = {
   home: 'முகப்பு',
   cityTwin: '3D நகர டிஜிட்டல் ட்வின்',
+  predictiveAi: 'முன்னறிவிப்பு AI',
   liveMap: 'நேரடி வரைபடம்',
   reportIssue: 'புகார் அளிக்கவும்',
   signIn: 'உள்நுழையவும்',
@@ -269,6 +279,8 @@ const ta: TranslationKeys = {
   switchRole: 'டெமோ பங்கு மாற்றவும் (3 பங்குகள்)',
   myDashboard: 'என் டாஷ்போர்டு',
   language: 'மொழி',
+  heroBadge: 'AI இயங்கும் மக்கள் கூட்ட மூலக் குடிமைப் பிரச்சனை தீர்வு',
+  heroTitle: 'உள்ளூர் குடிமைப் பிரச்சினைகளைப் புகாரளிக்கவும். AI உடனடியாக அதிகாரிகளுக்கும் பணியாளர்களுக்கும் அனுப்புகிறது.',
 
   reportTitle: 'குடிமைப் பிரச்சினையைப் புகார் செய்யுங்கள்',
   reportSubtitle: 'உங்கள் உண்மையான கேமரா புகைப்படத்தைப் பதிவேற்றுங்கள், குரல் குறிப்புகளைப் பதிவு செய்யுங்கள்.',
@@ -341,6 +353,7 @@ const ta: TranslationKeys = {
 const te: TranslationKeys = {
   home: 'హోమ్',
   cityTwin: '3D సిటీ ట్విన్',
+  predictiveAi: 'అంచనా AI',
   liveMap: 'లైవ్ మ్యాప్',
   reportIssue: 'సమస్య నివేదించండి',
   signIn: 'సైన్ ఇన్',
@@ -348,6 +361,8 @@ const te: TranslationKeys = {
   switchRole: 'డెమో పాత్ర మార్చండి',
   myDashboard: 'నా డాష్‌బోర్డ్',
   language: 'భాష',
+  heroBadge: 'AI ఆధారిత పౌర సమస్య పరిష్కారం',
+  heroTitle: 'స్థానిక పౌర సమస్యలను నివేదించండి. AI తక్షణమే అధికారులకు మరియు వర్కర్లకు పంపుతుంది.',
 
   reportTitle: 'పౌర సమస్యను నివేదించండి',
   reportSubtitle: 'మీ నిజమైన కెమెరా ఫోటోను అప్‌లోడ్ చేయండి, వాయిస్ నోట్‌లు రికార్డ్ చేయండి.',
@@ -418,7 +433,8 @@ const te: TranslationKeys = {
 
 // Bengali
 const bn: TranslationKeys = { ...en,
-  home: 'হোম', cityTwin: '3D সিটি টুইন', liveMap: 'লাইভ মানচিত্র', reportIssue: 'অভিযোগ দায়ের করুন',
+  home: 'হোম', cityTwin: '3D সিটি টুইন', predictiveAi: 'পূর্বাভাস AI', liveMap: 'লাইভ মানচিত্র', reportIssue: 'অভিযোগ দায়ের করুন',
+  heroBadge: 'AI পরিচালিত নাগরিক সমস্যা সমাধান', heroTitle: 'স্থানীয় নাগরিক সমস্যাগুলি জানান। AI সঙ্গে সঙ্গে কর্মকর্তাদের কাছে পাঠায়।',
   signIn: 'সাইন ইন', signOut: 'সাইন আউট', reportTitle: 'নাগরিক সমস্যা জানান',
   submitTicket: 'টিকিট জমা দিন ও বিভাগে পাঠান', anonymousMode: 'বেনামী মোড',
   workerPortal: 'ফিল্ড ওয়ার্কার পোর্টাল', citizenPortal: 'নাগরিক ড্যাশবোর্ড',
@@ -429,7 +445,8 @@ const bn: TranslationKeys = { ...en,
 
 // Marathi
 const mr: TranslationKeys = { ...en,
-  home: 'मुख्यपृष्ठ', cityTwin: '3D सिटी ट्विन', liveMap: 'लाइव्ह नकाशा', reportIssue: 'तक्रार नोंदवा',
+  home: 'मुख्यपृष्ठ', cityTwin: '3D सिटी ट्विन', predictiveAi: 'पूर्वानुमान AI', liveMap: 'लाइव्ह नकाशा', reportIssue: 'तक्रार नोंदवा',
+  heroBadge: 'एआय संचलित नागरिक समस्या निवारण', heroTitle: 'स्थानिक नागरी समस्यांची नोंद करा. AI त्वरित अधिकारी आणि कामगारांकडे पाठवते.',
   signIn: 'साइन इन', signOut: 'साइन आउट', reportTitle: 'नागरी समस्या नोंदवा',
   submitTicket: 'तिकीट सबमिट करा आणि विभागाला पाठवा', anonymousMode: 'अनामिक मोड',
   workerPortal: 'फील्ड कामगार पोर्टल', citizenPortal: 'नागरिक डॅशबोर्ड',
@@ -440,7 +457,8 @@ const mr: TranslationKeys = { ...en,
 
 // Gujarati
 const gu: TranslationKeys = { ...en,
-  home: 'હોમ', cityTwin: '3D સિટી ટ્વિન', liveMap: 'લાઇવ નકશો', reportIssue: 'ફરિયાદ નોંધાવો',
+  home: 'હોમ', cityTwin: '3D સિટી ટ્વિન', predictiveAi: 'પૂર્વાનુમાન AI', liveMap: 'લાઇવ નકશો', reportIssue: 'ફરિયાદ નોંધાવો',
+  heroBadge: 'AI સંચાલિત નાગરિક સમસ્યા નિવારણ', heroTitle: 'સ્થાનિક નાગરિક સમસ્યાઓની જાણ કરો. AI તરત જ અધિકારીઓ અને કામદારોને મોકલે છે.',
   signIn: 'સાઇન ઇન', signOut: 'સાઇન આઉટ', reportTitle: 'નાગરિક સમસ્યાની જાણ કરો',
   submitTicket: 'ટિકિટ સબમિટ કરો અને વિભાગને મોકલો', anonymousMode: 'અનામિક મોડ',
   workerPortal: 'ફિલ્ડ વર્કર પોર્ટલ', citizenPortal: 'નાગરિક ડેશબોર્ડ',
@@ -449,7 +467,8 @@ const gu: TranslationKeys = { ...en,
 
 // Kannada
 const kn: TranslationKeys = { ...en,
-  home: 'ಮುಖಪುಟ', cityTwin: '3D ಸಿಟಿ ಟ್ವಿನ್', liveMap: 'ಲೈವ್ ನಕ್ಷೆ', reportIssue: 'ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ',
+  home: 'ಮುಖಪುಟ', cityTwin: '3D ಸಿಟಿ ಟ್ವಿನ್', predictiveAi: 'ಪೂರ್ವಸೂಚನೆ AI', liveMap: 'ಲೈವ್ ನಕ್ಷೆ', reportIssue: 'ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ',
+  heroBadge: 'AI ಚಾಲಿತ ನಾಗರಿಕ ಸಮಸ್ಯೆ ಪರಿಹಾರ', heroTitle: 'ಸ್ಥಾನಿಕ ನಾಗರಿಕ ಸಮಸ್ಯೆಗಳನ್ನು ವರದಿ ಮಾಡಿ. AI ತಕ್ಷಣವೇ ರವಾನಿಸುತ್ತದೆ.',
   signIn: 'ಸೈನ್ ಇನ್', signOut: 'ಸೈನ್ ಔಟ್', reportTitle: 'ನಾಗರಿಕ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ',
   submitTicket: 'ಟಿಕೆಟ್ ಸಲ್ಲಿಸಿ ಮತ್ತು ಇಲಾಖೆಗೆ ಕಳುಹಿಸಿ', anonymousMode: 'ಅನಾಮಧೇಯ ಮೋಡ್',
   workerPortal: 'ಕ್ಷೇತ್ರ ಕಾರ್ಮಿಕ ಪೋರ್ಟಲ್', citizenPortal: 'ನಾಗರಿಕ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್',
@@ -458,7 +477,8 @@ const kn: TranslationKeys = { ...en,
 
 // Malayalam
 const ml: TranslationKeys = { ...en,
-  home: 'ഹോം', cityTwin: '3D സിറ്റി ട്വിൻ', liveMap: 'ലൈവ് മാപ്പ്', reportIssue: 'പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
+  home: 'ഹോം', cityTwin: '3D സിറ്റി ട്വിൻ', predictiveAi: 'പ്രവചന AI', liveMap: 'ലൈവ് മാപ്പ്', reportIssue: 'പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
+  heroBadge: 'AI അധിഷ്ഠിത പൗരപ്രശ്ന പരിഹാരം', heroTitle: 'പ്രാദേശിക പൗരപ്രശ്നങ്ങൾ റിപ്പോർട്ട് ചെയ്യുക. AI തൽക്ഷണം കൈമാറുന്നു.',
   signIn: 'സൈൻ ഇൻ', signOut: 'സൈൻ ഔട്ട്', reportTitle: 'സിവിക് പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
   submitTicket: 'ടിക്കറ്റ് സമർപ്പിച്ച് വകുപ്പിലേക്ക് അയയ്ക്കുക', anonymousMode: 'അജ്ഞാത മോഡ്',
   workerPortal: 'ഫീൽഡ് വർക്കർ പോർട്ടൽ', citizenPortal: 'പൗരൻ ഡാഷ്ബോർഡ്',

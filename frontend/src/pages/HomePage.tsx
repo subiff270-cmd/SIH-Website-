@@ -43,6 +43,7 @@ import { SmartCityCanvas } from '../components/3d/SmartCityCanvas';
 import { StepVisualizer } from '../components/common/StepVisualizer';
 import { useIssues } from '../context/IssueContext';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import { Complaint } from '../types';
 
 /* ── Animated Counter Hook ─────────────────────────────────── */
@@ -87,6 +88,7 @@ export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const { complaints } = useIssues();
   const { currentUser, switchRole } = useAuth();
+  const { t } = useLanguage();
   const cityCanvasRef = useRef<HTMLDivElement>(null);
 
   // 3D Canvas state controls
@@ -221,7 +223,7 @@ export const HomePage: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-300 text-xs font-mono shadow-glowCyan">
             <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
-            AI Powered Crowdsourced Civic Issue Triage
+            {t.heroBadge}
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold font-display tracking-tight leading-none drop-shadow-[0_0_25px_rgba(6,182,212,0.3)]">

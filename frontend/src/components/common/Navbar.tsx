@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
   const navLinks = [
     { path: '/', label: t.home, icon: Building2 },
     { path: '/digital-twin', label: t.cityTwin, icon: Layers },
-    { path: '/predictive', label: 'Predictive AI', icon: TrendingUp },
+    { path: '/predictive', label: t.predictiveAi, icon: TrendingUp },
     { path: '/map', label: t.liveMap, icon: MapPin },
     { path: '/report', label: t.reportIssue, icon: PlusCircle },
   ];
