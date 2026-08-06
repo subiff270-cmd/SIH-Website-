@@ -303,9 +303,9 @@ export const HomePage: React.FC = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold font-display text-white flex items-center gap-2">
-              <Building2 className="w-6 h-6 text-cyan-400" /> Interactive 3D Digital Twin City
+              <Building2 className="w-6 h-6 text-cyan-400" /> {t.twinTitle}
             </h2>
-            <p className="text-xs text-slate-400 font-mono">Pulsing pins show live complaints. Click buildings or department cards to filter.</p>
+            <p className="text-xs text-slate-400 font-mono">{t.twinSub}</p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 bg-slate-950/80 p-2 rounded-2xl border border-slate-800 backdrop-blur-md">
@@ -480,8 +480,8 @@ export const HomePage: React.FC = () => {
             <span className="px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-mono uppercase shadow-glowPurple">
               Municipal Department Coverage
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-display">6 Departments, One Unified Platform</h2>
-            <p className="text-xs text-slate-400 font-mono">Click any department card below to filter 3D twin buildings & view real-time department statistics.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display">{t.deptTitle}</h2>
+            <p className="text-xs text-slate-400 font-mono">{t.deptSub}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -549,8 +549,8 @@ export const HomePage: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block mr-2" />
               Live Issue Activity Feed
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-display">Real-Time Complaint Tracker</h2>
-            <p className="text-xs text-slate-400 font-mono">Click any complaint row below to inspect live photos, severity score, and worker assignment.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display">{t.activityTitle}</h2>
+            <p className="text-xs text-slate-400 font-mono">{t.activitySub}</p>
           </div>
 
           <div className="space-y-3">
@@ -609,8 +609,8 @@ export const HomePage: React.FC = () => {
             <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono uppercase shadow-glowCyan">
               Engineering Architecture
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold font-display">AI-Powered Technology Stack</h2>
-            <p className="text-xs text-slate-400 font-mono">Built with cutting-edge AI/ML, 3D visualization, and real-time data pipelines.</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-display">{t.techStackTitle}</h2>
+            <p className="text-xs text-slate-400 font-mono">{t.techStackSub}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

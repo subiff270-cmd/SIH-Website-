@@ -39,6 +39,22 @@ type TranslationKeys = {
   statWardsCovered: string;
   statRewards: string;
 
+  // Homepage Sections
+  twinTitle: string;
+  twinSub: string;
+  deptTitle: string;
+  deptSub: string;
+  activityTitle: string;
+  activitySub: string;
+  howItWorksTitle: string;
+  howItWorksSub: string;
+  techStackTitle: string;
+  techStackSub: string;
+  faqTitle: string;
+  faqSub: string;
+  predictiveTitle: string;
+  predictiveSub: string;
+
   // Report Issue Page
   reportTitle: string;
   reportSubtitle: string;
@@ -134,6 +150,21 @@ const en: TranslationKeys = {
   statWardsCovered: 'MUNICIPAL WARDS COVERED',
   statRewards: 'REWARDS DISPATCHED',
 
+  twinTitle: '3D Smart City Digital Twin Viewport',
+  twinSub: 'Interactive WebGL 3D canvas showing active complaint beacons, department HQs, drone surveillance, and live weather conditions.',
+  deptTitle: 'Department Priority Matrices & Live Incident Telemetry',
+  deptSub: 'Select a municipal department to filter active complaints, track field worker deployment, and view SLA compliance stats.',
+  activityTitle: 'Live Crowd Triage & Ticket Feed',
+  activitySub: 'Real-time feed of citizen complaint reports being analyzed by YOLOv8 vision AI, verified by GPS, and assigned to workers.',
+  howItWorksTitle: '3-Step Autonomous Civic Lifecycle',
+  howItWorksSub: 'From citizen camera photo to AI verification, officer triage approval, field worker dispatch, and citizen reward points.',
+  techStackTitle: 'CivicAI Neural Engine Architecture',
+  techStackSub: 'Powered by computer vision object detection, GIS spatial deduplication, NLP voice triage, and 3D WebGL digital twin rendering.',
+  faqTitle: 'Frequently Asked Questions',
+  faqSub: 'Everything you need to know about CivicAI Smart City OS, reporting complaints, earning rewards, and officer workflows.',
+  predictiveTitle: 'Predictive Civic Maintenance Hub',
+  predictiveSub: 'Instead of waiting for complaints, predict future civic problems using historical complaints, rainfall, traffic density, and road age.',
+
   reportTitle: 'Report a Civic Issue',
   reportSubtitle: 'Upload your real camera photo, record voice notes, and let CivicAI auto-detect category & merge duplicates.',
   uploadPhoto: 'Defect Photo Upload (Select File from Device or Use Preset)',
@@ -223,6 +254,21 @@ const hi: TranslationKeys = {
   statResolutionSpeed: 'औसत समाधान गति',
   statWardsCovered: 'नगर निगम वार्ड कवर किए गए',
   statRewards: 'नागरिक पुरस्कार वितरित',
+
+  twinTitle: '3D स्मार्ट सिटी डिजिटल ट्विन व्यूपोर्ट',
+  twinSub: 'सक्रिय शिकायत बीकन, विभागीय मुख्यालय, ड्रोन निगरानी और लाइव मौसम स्थितियों को प्रदर्शित करने वाला 3D कैनवास।',
+  deptTitle: 'विभाग प्राथमिकता मैट्रिक्स और लाइव घटना टेलीमेट्री',
+  deptSub: 'सक्रिय शिकायतों को फ़िल्टर करने और फ़ील्ड वर्कर तैनाती को ट्रैक करने के लिए एक नगर निगम विभाग चुनें।',
+  activityTitle: 'लाइव क्राउड ट्राइएज और टिकट फीड',
+  activitySub: 'YOLOv8 विज़न AI द्वारा विश्लेषित और GPS द्वारा सत्यापित नागरिक शिकायत रिपोर्टों की वास्तविक समय फीड।',
+  howItWorksTitle: '3-चरणीय स्वायत्त नागरिक जीवनचक्र',
+  howItWorksSub: 'नागरिक कैमरा फ़ोटो से लेकर AI सत्यापन, अधिकारी अनुमोदन, वर्कर प्रेषण और पुरस्कार अंक तक।',
+  techStackTitle: 'CivicAI न्यूरल इंजन आर्किटेक्चर',
+  techStackSub: 'कंप्यूटर विज़न ऑब्जेक्ट डिटेक्शन, GIS स्थानिक डिड्यूप्लीकेशन और NLP द्वारा संचालित।',
+  faqTitle: 'अक्सर पूछे जाने वाले प्रश्न',
+  faqSub: 'CivicAI स्मार्ट सिटी OS, शिकायतों की रिपोर्ट करने और पुरस्कार अर्जित करने के बारे में सब कुछ।',
+  predictiveTitle: 'पूर्वानुमानित नागरिक रखरखाव हब',
+  predictiveSub: 'शिकायतों की प्रतीक्षा करने के बजाय, ऐतिहासिक डेटा, वर्षा और यातायात का उपयोग करके भविष्य की समस्याओं का पूर्वानुमान लगाएं।',
 
   reportTitle: 'नागरिक समस्या की रिपोर्ट करें',
   reportSubtitle: 'अपनी असली कैमरा फोटो अपलोड करें, वॉइस नोट रिकॉर्ड करें, और CivicAI को श्रेणी पहचानने दें।',
@@ -314,6 +360,21 @@ const ta: TranslationKeys = {
   statWardsCovered: 'உள்ளடக்கப்பட்ட நகராட்சி வார்டுகள்',
   statRewards: 'வழங்கப்பட்ட குடிமக்கள் வெகுமதிகள்',
 
+  twinTitle: '3D ஸ்மார்ட் சிட்டி டிஜிட்டல் ட்வின் வியூபோர்ட்',
+  twinSub: 'செயலில் உள்ள புகார் பீக்கான்கள், துறை தலைமையகங்கள், ட்ரோன் கண்காணிப்பு மற்றும் நேரடி வானிலை நிலைகளைக் காட்டும் 3D கேன்வாஸ்.',
+  deptTitle: 'துறை முன்னுரிமை மேட்ரிக்ஸ் & நேரடி சம்பவ அளவீடுகள்',
+  deptSub: 'செயலில் உள்ள புகார்களை வடிகட்டவும், களப்பணியாளர் வரிசைப்படுத்தலைக் கண்காணிக்கவும் ஒரு நகராட்சித் துறையைத் தேர்ந்தெடுக்கவும்.',
+  activityTitle: 'நேரடி மக்கள் கூட்டக் குழு & டிக்கெட் ஊட்டம்',
+  activitySub: 'YOLOv8 விஷன் AI ஆல் பகுப்பாய்வு செய்யப்பட்டு, GPS ஆல் சரிபார்க்கப்பட்ட குடிமக்கள் புகார்களின் நேரடி ஊட்டம்.',
+  howItWorksTitle: '3-படி தன்னாட்சி குடிமை வாழ்க்கைச் சுழற்சி',
+  howItWorksSub: 'குடிமகன் கேமரா புகைப்படத்திலிருந்து AI சரிபார்ப்பு, அதிகாரி ஒப்புதல், பணியாளர் அனுப்புதல் மற்றும் வெகுமதி புள்ளிகள் வரை.',
+  techStackTitle: 'CivicAI நியூரல் என்ஜின் கட்டிடக்கலை',
+  techStackSub: 'கம்ப்யூட்டர் விஷன் பொருள் கண்டறிதல், GIS விண்வெளி நகல் நீக்கம் மற்றும் NLP குரல் குழு மூலம் இயக்கப்படுகிறது.',
+  faqTitle: 'அடிக்கடி கேட்கப்படும் கேள்விகள்',
+  faqSub: 'CivicAI ஸ்மார்ட் சிட்டி OS, புகார்களைப் புகாரளிப்பது மற்றும் வெகுமதிகளைப் பெறுவது பற்றி நீங்கள் தெரிந்து கொள்ள வேண்டிய அனைத்தும்.',
+  predictiveTitle: 'முன்னறிவிப்பு குடிமை பராமரிப்பு மையம்',
+  predictiveSub: 'புகார்களுக்காகக் காத்திருப்பதற்குப் பதிலாக, வரலாற்று புகார்கள், மழைப்பொழிவு மற்றும் போக்குவரத்தைப் பயன்படுத்தி எதிர்கால சிக்கல்களைக் கணிக்கவும்.',
+
   reportTitle: 'குடிமைப் பிரச்சினையைப் புகார் செய்யுங்கள்',
   reportSubtitle: 'உங்கள் உண்மையான கேமரா புகைப்படத்தைப் பதிவேற்றுங்கள், குரல் குறிப்புகளைப் பதிவு செய்யுங்கள்.',
   uploadPhoto: 'குறைபாடு புகைப்படம் பதிவேற்றம்',
@@ -404,6 +465,21 @@ const te: TranslationKeys = {
   statWardsCovered: 'కవర్ చేయబడిన మున్సిపల్ వార్డులు',
   statRewards: 'పంపిణీ చేసిన పౌర బహుమతులు',
 
+  twinTitle: '3D స్మార్ట్ సిటీ డిజిటల్ ట్విన్ వ్యూపోర్ట్',
+  twinSub: 'యాక్టివ్ ఫిర్యాదు బీకన్లు, డిపార్ట్‌మెంట్ HQలు మరియు ప్రత్యక్ష వాతావరణ పరిస్థితులను చూపించే 3D కాన్వాస్.',
+  deptTitle: 'డిపార్ట్‌మెంట్ ప్రాధాన్యత మ్యాట్రిక్స్ & లైవ్ ఇన్సిడెంట్ టెలిమెట్రీ',
+  deptSub: 'యాక్టివ్ ఫిర్యాదులను ఫిల్టర్ చేయడానికి మరియు ఫీల్డ్ వర్కర్ విస్తరణను ట్రాక్ చేయడానికి మున్సిపల్ డిపార్ట్‌మెంట్‌ను ఎంచుకోండి.',
+  activityTitle: 'లైవ్ క్రౌడ్ ట్రియాజ్ & టికెట్ ఫీడ్',
+  activitySub: 'YOLOv8 విజన్ AI ద్వారా విశ్లేషించబడిన మరియు GPS ద్వారా ధృవీకరించబడిన పౌర ఫిర్యాదు నివేదికల ప్రత్యక్ష ఫీడ్.',
+  howItWorksTitle: '3-దశల స్వయంప్రతిపత్తి పౌర జీవనచక్రం',
+  howItWorksSub: 'పౌరుడి కెమెరా ఫోటో నుండి AI ధృవీకరణ, అధికారి ఆమోదం, వర్కర్ డిస్పాచ్ మరియు రివార్డ్ పాయింట్ల వరకు.',
+  techStackTitle: 'CivicAI న్యూరల్ ఇంజిన్ ఆర్కిటెక్చర్',
+  techStackSub: 'కంప్యూటర్ విజన్ ఆబ్జెక్ట్ డిటెక్షన్, GIS స్పేషియల్ డిడ్యూప్లికేషన్ మరియు NLP వాయిస్ ట్రియాజ్ ద్వారా ఆధారితం.',
+  faqTitle: 'తరచుగా అడిగే ప్రశ్నలు',
+  faqSub: 'CivicAI స్మార్ట్ సిటీ OS, ఫిర్యాదులను నివేదించడం మరియు రివార్డ్‌లను సంపాదించడం గురించి మీరు తెలుసుకోవలసినవన్నీ.',
+  predictiveTitle: 'అంచనా పౌర నిర్వహణ హబ్',
+  predictiveSub: 'ఫిర్యాదుల కోసం వేచి ఉండే బదులు, చారిత్రక డేటా, వర్షపాతం మరియు ట్రాఫిక్‌ను ఉపయోగించి భవిష్యత్తు సమస్యలను అంచనా వేయండి.',
+
   reportTitle: 'పౌర సమస్యను నివేదించండి',
   reportSubtitle: 'మీ నిజమైన కెమెరా ఫోటోను అప్‌లోడ్ చేయండి, వాయిస్ నోట్‌లు రికార్డ్ చేయండి.',
   uploadPhoto: 'లోపం ఫోటో అప్‌లోడ్',
@@ -478,6 +554,13 @@ const bn: TranslationKeys = { ...en,
   heroTitleMain: 'CivicAI স্মার্ট সিটি অপারেটিং সিস্টেম', heroSub: 'গর্ত, আবর্জনা, জল ফুটো বা ভাঙা আলোর ছবি তুলুন। AI স্বয়ংক্রিয়ভাবে শ্রেণীবদ্ধ করে।',
   ctaReport: 'ছবি তুলুন এবং নাগরিক সমস্যা জানান', ctaTrack: 'আমার টিকিটের অগ্রগতি দেখুন →',
   statTriageAcc: 'AI শ্রেণীকরণ নির্ভুলতা', statResolutionSpeed: 'গড় সমাধানের গতি', statWardsCovered: 'আওতাভুক্ত পৌর ওয়ার্ড', statRewards: 'বিতরণ করা নাগরিক পুরষ্কার',
+  twinTitle: '3D স্মার্ট সিটি ডিজিটাল টুইন ভিউপোর্ট', twinSub: 'সক্রিয় অভিযোগ বীকন, বিভাগীয় সদর দপ্তর এবং সরাসরি আবহাওয়া দৃশ্য।',
+  deptTitle: 'বিভাগীয় অগ্রাধিকার ম্যাট্রিক্স ও লাইভ পরিসংখ্যান', deptSub: 'সক্রিয় অভিযোগ ফিল্টার করতে একটি পৌর বিভাগ নির্বাচন করুন।',
+  activityTitle: 'লাইভ ট্রায়াজ ও টিকিট ফিড', activitySub: 'YOLOv8 ভিশন AI দ্বারা বিশ্লেষিত নাগরিক অভিযোগের সরাসরি ফিড।',
+  howItWorksTitle: '৩-ধাপের স্বায়ত্তশাসিত নাগরিক জীবনচক্র', howItWorksSub: 'ছবি তোলা থেকে AI যাচাইকরণ, কর্মকর্তা অনুমোদন এবং পুরস্কার পয়েন্ট পর্যন্ত।',
+  techStackTitle: 'CivicAI নিউরাল ইঞ্জিন আর্কিটেকচার', techStackSub: 'কম্পিউটার ভিশন ও স্থানিক প্রযুক্তি দ্বারা চালিত।',
+  faqTitle: 'সাধারণ জিজ্ঞাসা', faqSub: 'CivicAI স্মার্ট সিটি অপারেটিং সিস্টেম সম্পর্কে সবকিছু।',
+  predictiveTitle: 'পূর্বাভাসমূলক নাগরিক রক্ষণাবেক্ষণ হাব', predictiveSub: 'ঐতিহাসিক উপাত্ত ও আবহাওয়া ব্যবহার করে ভবিষ্যতের সমস্যা অনুমান করুন।',
   signIn: 'সাইন ইন', signOut: 'সাইন আউট', reportTitle: 'নাগরিক সমস্যা জানান',
 };
 
@@ -488,6 +571,13 @@ const mr: TranslationKeys = { ...en,
   heroTitleMain: 'CivicAI स्मार्ट सिटी ऑपरेटिंग सिस्टिम', heroSub: 'खड्डे, कचरा, पाण्याचे लिकेज किंवा तुटलेल्या दिव्यांचे फोटो काढा. AI आपोआप वर्गीकरण करते.',
   ctaReport: 'फोटो काढा आणि नागरी समस्या नोंदवा', ctaTrack: 'माझ्या तक्रारींची प्रगती पहा →',
   statTriageAcc: 'एआय वर्गीकरण अचूकता', statResolutionSpeed: 'सरासरी निवारण वेग', statWardsCovered: 'समाविष्ट नागरी वॉर्ड', statRewards: 'वितरित केलेले नागरिक पुरस्कार',
+  twinTitle: '3D स्मार्ट सिटी डिजिटल ट्विन व्ह्यूपोर्ट', twinSub: 'सक्रिय तक्रार बीकन्स, विभागीय मुख्यालय आणि थेट हवामान दर्शवणारा 3D कॅनव्हास.',
+  deptTitle: 'विभाग प्राधान्य मॅट्रिक्स आणि लाईव्ह टेलिमेट्री', deptSub: 'तक्रारी फिल्टर करण्यासाठी नगरपालिका विभाग निवडा.',
+  activityTitle: 'लाईव्ह क्राउड ट्रायज आणि तिकीट फीड', activitySub: 'YOLOv8 व्हिजन AI द्वारे विश्लेषित नागरी तक्रारींची थेट फीड.',
+  howItWorksTitle: '3-टप्प्यांची स्वायत्त नागरी जीवनचक्र', howItWorksSub: 'फोटोपासून ते AI पडताळणी, अधिकारी मंजुरी आणि पुरस्कार पॉइंटपर्यंत.',
+  techStackTitle: 'CivicAI न्यूरल इंजिन आर्किटेक्चर', techStackSub: 'कॉम्प्युटर व्हिजन आणि स्थान तंत्रज्ञानाद्वारे संचलित.',
+  faqTitle: 'सतत विचारले जाणारे प्रश्न', faqSub: 'CivicAI स्मार्ट सिटी OS बद्दल सर्वकाही.',
+  predictiveTitle: 'पूर्वानुमानित नागरी देखभाल हब', predictiveSub: 'ऐतिहासिक डेटा आणि हवामानाचा वापर करून भविष्यातील समस्यांचा अंदाज लावा.',
   signIn: 'साइन इन', signOut: 'साइन आउट', reportTitle: 'नागरी समस्या नोंदवा',
 };
 
@@ -498,6 +588,13 @@ const gu: TranslationKeys = { ...en,
   heroTitleMain: 'CivicAI સ્માર્ટ સિટી ઓપરેટિંગ સિસ્ટમ', heroSub: 'ખાડાઓ, કચરો, પાણીના લીકેજ અથવા તૂટેલી લાઈટોના ફોટા પાડો. AI આપમેળે વર્ગીકૃત કરે છે.',
   ctaReport: 'ફોટો પાડો અને નાગરિક સમસ્યાની જાણ કરો', ctaTrack: 'મારી ફરિયાદોની પ્રગતિ જુઓ →',
   statTriageAcc: 'AI વર્ગીકરણ સચોટતા', statResolutionSpeed: 'સરેરાશ નિવારણ ઝડપ', statWardsCovered: 'આવરી લેવાયેલ પાલિકા વોર્ડ', statRewards: 'વિતરિત કરેલ નાગરિક ઈનામો',
+  twinTitle: '3D સ્માર્ટ સિટી ડિજિટલ ટ્વિન વ્યૂપોર્ટ', twinSub: 'સક્રિય ફરિયાદ બીકન્સ, વિભાગીય વડામથક અને લાઇવ હવામાન દર્શાવતું 3D કેનવાસ.',
+  deptTitle: 'વિભાગ પ્રાથમિકતા મેટ્રિક્સ અને લાઇવ આંકડા', deptSub: 'સક્રિય ફરિયાદો ફિલ્ટર કરવા માટે પાલિકા વિભાગ પસંદ કરો.',
+  activityTitle: 'લાઇવ ટ્રાયઝ અને ટિકિટ ફીડ', activitySub: 'YOLOv8 વિઝન AI દ્વારા વિશ્લેષિત નાગરિક ફરિયાદોની લાઈવ ફીડ.',
+  howItWorksTitle: '3-તબક્કાનું સ્વાયત્ત નાગરિક જીવનચક્ર', howItWorksSub: 'ફોટો પાડવાથી લઈને AI ચકાસણી, અધિકારી મંજૂરી અને ઈનામી પોઈન્ટ્સ સુધી.',
+  techStackTitle: 'CivicAI ન્યુરલ એન્જિન આર્કિટેક્ચર', techStackSub: 'કોમ્પ્યુટર વિઝન અને સ્થાનિક ટેકનોલોજી દ્વારા સંચાલિત.',
+  faqTitle: 'વારંવાર પૂછાતા પ્રશ્નો', faqSub: 'CivicAI સ્માર્ટ સિટી ઓએસ વિશે બધું જ.',
+  predictiveTitle: 'પૂર્વાનુમાનિત નાગરિક જાળવણી હબ', predictiveSub: 'ઐતિહાસિક ડેટા અને હવામાનનો ઉપયોગ કરીને ભવિષ્યની સમસ્યાઓની આગાહી કરો.',
   signIn: 'સાઇન ઇન', signOut: 'સાઇન આઉટ', reportTitle: 'નાગરિક સમસ્યાની જાણ કરો',
 };
 
@@ -508,6 +605,13 @@ const kn: TranslationKeys = { ...en,
   heroTitleMain: 'CivicAI ಸ್ಮಾರ್ಟ್ ಸಿಟಿ ಆಪರೇಟಿಂಗ್ ಸಿಸ್ಟಮ್', heroSub: 'ಗುಂಡಿಗಳು, ಕಸ, ನೀರು ಸೋರಿಕೆ ಅಥವಾ ಮುರಿದ ದೀಪಗಳ ಫೋಟೋ ತೆಗೆಯಿರಿ.',
   ctaReport: 'ಫೋಟೋ ತೆಗೆದು ನಾಗರಿಕ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ', ctaTrack: 'ನನ್ನ ದೂರುಗಳ ಪ್ರಗತಿಯನ್ನು ವೀಕ್ಷಿಸಿ →',
   statTriageAcc: 'AI ವರ್ಗೀಕರಣ ನಿಖರತೆ', statResolutionSpeed: 'ಸರಾಸರಿ ಪರಿಹಾರ ವೇಗ', statWardsCovered: 'ಒಳಪಟ್ಟ ಪುರಸಭೆ ವಾರ್ಡ್‌ಗಳು', statRewards: 'ವಿಭಾಗಿಸಿದ ನಾಗರಿಕ ಬಹುಮಾನಗಳು',
+  twinTitle: '3D ಸ್ಮಾರ್ಟ್ ಸಿಟಿ ಡಿಜಿಟಲ್ ಟ್ವಿನ್ ವ್ಯೂಪೋರ್ಟ್', twinSub: 'ಸಕ್ರಿಯ ದೂರು ಬೀಕನ್‌ಗಳು, ಇಲಾಖಾ ಪ್ರಧಾನ ಕಚೇರಿಗಳು ಮತ್ತು ಲೈವ್ ಹವಾಮಾನ ಪ್ರದರ್ಶಿಸುವ 3D ಕ್ಯಾನ್ವಾಸ್.',
+  deptTitle: 'ಇಲಾಖೆ ಆದ್ಯತೆಯ ಮ್ಯಾಟ್ರಿಕ್ಸ್ ಮತ್ತು ಲೈವ್ ಟೆಲಿಮೆಟ್ರಿ', deptSub: 'ಸಕ್ರಿಯ ದೂರುಗಳನ್ನು ಫಿಲ್ಟರ್ ಮಾಡಲು ಪುರಸಭೆಯ ಇಲಾಖೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ.',
+  activityTitle: 'ಲೈವ್ ಟ್ರಯಾಜ್ ಮತ್ತು ಟಿಕೆಟ್ ಫೀಡ್', activitySub: 'YOLOv8 ವಿಷನ್ AI ನಿಂದ ವಿಶ್ಲೇಷಿಸಲ್ಪಟ್ಟ ನಾಗರಿಕ ದೂರುಗಳ ಲೈವ್ ಫೀಡ್.',
+  howItWorksTitle: '3-ಹಂತದ ಸ್ವಾಯತ್ತ ನಾಗರಿಕ ಜೀವನಚಕ್ರ', howItWorksSub: 'ಫೋಟೋ ತೆಗೆಯುವುದರಿಂದ AI ಪರಿಶೀಲನೆ, ಅಧಿಕಾರಿ ಅನುಮೋದನೆ ಮತ್ತು ಬಹುಮಾನ ಪಾಯಿಂಟ್‌ಗಳವರೆಗೆ.',
+  techStackTitle: 'CivicAI ನ್ಯೂರಲ್ ಇಂಜಿನ್ ಆರ್ಕಿಟೆಕ್ಚರ್', techStackSub: 'ಕಂಪ್ಯೂಟರ್ ವಿಷನ್ ಮತ್ತು ಸ್ಥಳೀಯ ತಂತ್ರಜ್ಞಾನದಿಂದ ನಡೆಸಲ್ಪಡುತ್ತದೆ.',
+  faqTitle: 'ಪದೇ ಪದೇ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು', faqSub: 'CivicAI ಸ್ಮಾರ್ಟ್ ಸಿಟಿ OS ಬಗ್ಗೆ ನೀವು ತಿಳಿದುಕೊಳ್ಳಬೇಕಾದ ಎಲ್ಲವೂ.',
+  predictiveTitle: 'ಪೂರ್ವಸೂಚಕ ನಾಗರಿಕ ನಿರ್ವಹಣಾ ಕೇಂದ್ರ', predictiveSub: 'ಹವಾಮಾನ ಮತ್ತು ಸಂಚಾರ ಬಳಸಿ ಭವಿಷ್ಯದ ಸಮಸ್ಯೆಗಳನ್ನು ಊಹಿಸಿ.',
   signIn: 'ಸೈನ್ ಇನ್', signOut: 'ಸೈನ್ ಔಟ್', reportTitle: 'ನಾಗರಿಕ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ',
 };
 
@@ -518,6 +622,13 @@ const ml: TranslationKeys = { ...en,
   heroTitleMain: 'CivicAI സ്മാർട്ട് സിറ്റി ഓപ്പറേറ്റിംഗ് സിസ്റ്റം', heroSub: 'കുഴികൾ, മാലിന്യങ്ങൾ, ജലചോർച്ച എന്നിവയുടെ ചിത്രങ്ങൾ എടുക്കുക.',
   ctaReport: 'ചിത്രമെടുത്ത് പൗരപ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക', ctaTrack: 'എന്റെ റിപ്പോർട്ടുകളുടെ പുരോഗതി കാണുക →',
   statTriageAcc: 'AI തരംതിരിക്കൽ കൃത്യത', statResolutionSpeed: 'ശരാശരി പരിഹാര വേഗത', statWardsCovered: 'ഉൾപ്പെടുത്തിയ മുൻസിപ്പൽ വാർഡുകൾ', statRewards: 'വിതരണം ചെയ്ത പൗര പുരസ്കാരങ്ങൾ',
+  twinTitle: '3D സ്മാർട്ട് സിറ്റി ഡിജിറ്റൽ ട്വിൻ വ്യൂപോർട്ട്', twinSub: 'സജീവ പരാതി ബീക്കണുകൾ, വകുപ്പ് ആസ്ഥാനങ്ങൾ, ഡ്രോൺ നിരീക്ഷണം എന്നിവ കാണിക്കുന്ന 3D ക്യാൻവാസ്.',
+  deptTitle: 'വകുപ്പ് മുൻഗണനാ മാട്രിക്സ് & ലൈവ് വിവരങ്ങൾ', deptSub: 'സജീവ പരാതികൾ ഫിൽട്ടർ ചെയ്യാൻ ഒരു മുൻസിപ്പൽ വകുപ്പ് തിരഞ്ഞെടുക്കുക.',
+  activityTitle: 'ലൈവ് പരാതി ഫീഡ്', activitySub: 'YOLOv8 വിഷൻ AI വഴി അപഗ്രഥിച്ച പൗര പരാതികളുടെ തത്സമയ ഫീഡ്.',
+  howItWorksTitle: '3-ഘട്ട സിവിക് ലൈഫ് സൈക്കിൾ', howItWorksSub: 'ചിത്രമെടുക്കൽ മുതൽ AI പരിശോധന, ഓഫീസർ അംഗീകാരം, റിവാർഡ് പോയിന്റുകൾ വരെ.',
+  techStackTitle: 'CivicAI ന്യൂറൽ എഞ്ചിൻ ആർക്കിടെക്ചർ', techStackSub: 'കംപ്യൂട്ടർ വിഷൻ, ജിഐഎസ് സാങ്കേതികവിദ്യ എന്നിവയാൽ പ്രവർത്തിക്കുന്നു.',
+  faqTitle: 'പതിവായി ചോദിക്കുന്ന ചോദ്യങ്ങൾ', faqSub: 'CivicAI സ്മാർട്ട് സിറ്റി OS നെക്കുറിച്ച് അറിയേണ്ടതെല്ലാം.',
+  predictiveTitle: 'പ്രവചന സിവിക് മെയിന്റനൻസ് ഹബ്', predictiveSub: 'കാലാവസ്ഥയും ഗതാഗതവും ഉപയോഗിച്ച് ഭാവിയിലെ പ്രശ്നങ്ങൾ പ്രവചിക്കുക.',
   signIn: 'സൈൻ ഇൻ', signOut: 'സൈൻ ഔട്ട്', reportTitle: 'സിവിക് പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക',
 };
 

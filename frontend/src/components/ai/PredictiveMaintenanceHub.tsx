@@ -20,6 +20,7 @@ import {
   Database,
   Cpu
 } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface PredictedRiskZone {
   id: string;
@@ -40,6 +41,7 @@ interface PredictedRiskZone {
 }
 
 export const PredictiveMaintenanceHub: React.FC = () => {
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'high_risk_zones' | 'ml_models' | 'preventive_guide'>('high_risk_zones');
   const [selectedZoneId, setSelectedZoneId] = useState<string>('zone_1');
 
@@ -113,10 +115,10 @@ export const PredictiveMaintenanceHub: React.FC = () => {
               <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" /> Predictive AI Forecasting Engine
             </div>
             <h2 className="text-3xl md:text-4xl font-extrabold font-display">
-              Predictive Civic Maintenance
+              {t.predictiveTitle}
             </h2>
             <p className="text-slate-300 text-xs md:text-sm leading-relaxed">
-              Instead of waiting for citizens to report broken roads, CivicAI analyzes <strong>historical complaints, rainfall, traffic density, road age, and weather forecasts</strong> to predict high-risk civic failure zones before defects occur.
+              {t.predictiveSub}
             </p>
           </div>
 
