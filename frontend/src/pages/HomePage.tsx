@@ -322,7 +322,7 @@ export const HomePage: React.FC = () => {
               className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-mono text-slate-200 flex items-center gap-1.5 hover:border-cyan-400"
             >
               {isNight ? <Moon className="w-3.5 h-3.5 text-purple-400" /> : <Sun className="w-3.5 h-3.5 text-amber-400" />}
-              {isNight ? 'Night View' : 'Daylight'}
+              {isNight ? t.nightView : t.daylight}
             </button>
 
             <select
@@ -330,17 +330,17 @@ export const HomePage: React.FC = () => {
               onChange={(e) => setWeather(e.target.value as any)}
               className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-mono text-cyan-300 outline-none"
             >
-              <option value="sunny">☀️ Clear Weather</option>
-              <option value="rain">🌧️ Rain Mode</option>
-              <option value="storm">⚡ Monsoon Storm</option>
-              <option value="fog">🌫️ Fog Grid</option>
+              <option value="sunny">{t.clearWeather}</option>
+              <option value="rain">{t.rainMode}</option>
+              <option value="storm">{t.monsoonStorm}</option>
+              <option value="fog">{t.fogGrid}</option>
             </select>
 
             <button
               onClick={handleEmergencyTrigger}
               className="btn-neon px-3.5 py-1.5 rounded-xl bg-rose-600 text-white font-mono font-bold text-xs shadow-glowRose flex items-center gap-1.5"
             >
-              <Flame className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> Emergency Focus
+              <Flame className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> {t.emergencyFocus}
             </button>
           </div>
         </div>
@@ -438,7 +438,7 @@ export const HomePage: React.FC = () => {
               to="/digital-twin"
               className="btn-neon px-4 py-2 rounded-xl bg-cyan-500 text-black font-bold text-xs font-mono shadow-glowCyan shrink-0 flex items-center gap-1.5"
             >
-              Expand Fullscreen 3D Twin <ExternalLink className="w-3.5 h-3.5" />
+              {t.fullscreenTwin} <ExternalLink className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>

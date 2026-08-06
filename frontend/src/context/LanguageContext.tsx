@@ -101,6 +101,30 @@ type TranslationKeys = {
   resolutionNotes: string;
   qualityScore: string;
 
+  // 3D City Twin Viewport Controls
+  nightView: string;
+  daylight: string;
+  clearWeather: string;
+  rainMode: string;
+  monsoonStorm: string;
+  fogGrid: string;
+  emergencyFocus: string;
+  fullscreenTwin: string;
+  orbitZoom: string;
+  clickBuildings: string;
+  clickDefectPins: string;
+  weatherEmergency: string;
+
+  // Report Issue Extras
+  voiceRecord: string;
+  voiceRecordDesc: string;
+  locationLocked: string;
+  gpsAccuracy: string;
+  wardAssigned: string;
+  duplicateWarning: string;
+  rewardCancelled: string;
+  pointsEarned: string;
+
   // Citizen Dashboard
   citizenPortal: string;
   totalReports: string;
@@ -209,6 +233,29 @@ const en: TranslationKeys = {
   resolutionNotes: 'Enter resolution notes...',
   qualityScore: 'Quality Score',
 
+  // 3D City Twin Viewport Controls
+  nightView: 'Night View',
+  daylight: 'Daylight View',
+  clearWeather: '☀️ Clear Weather',
+  rainMode: '🌧️ Rain Mode',
+  monsoonStorm: '⚡ Monsoon Storm',
+  fogGrid: '🌫️ Fog Grid',
+  emergencyFocus: 'Emergency Focus',
+  fullscreenTwin: 'Expand Fullscreen 3D Twin',
+  orbitZoom: 'Orbit & Zoom Controls',
+  clickBuildings: 'Click Department Buildings',
+  clickDefectPins: 'Click Pulsing Defect Pins',
+  weatherEmergency: 'Weather & Emergency Focus',
+
+  // Report Issue Extras
+  voiceRecord: 'Voice Note Audio Input',
+  voiceRecordDesc: 'Hold mic to describe defect in your regional language',
+  locationLocked: 'Autonomous Geo-Targeting Matrix Locked',
+  gpsAccuracy: 'GPS Sensor Precision',
+  wardAssigned: 'Municipal Ward Assigned',
+  duplicateWarning: 'DUPLICATE COMPLAINT DETECTED WITHIN 500M',
+  rewardCancelled: 'REWARD CANCELLED (0 PTS GRANTED)',
+  pointsEarned: '+50 CITIZEN REWARD POINTS GRANTED',
   citizenPortal: 'Citizen Dashboard',
   totalReports: 'Total Reports',
   resolved: 'Resolved',
@@ -233,7 +280,7 @@ const en: TranslationKeys = {
 };
 
 // Hindi translations
-const hi: TranslationKeys = {
+const hi: TranslationKeys = { ...en,
   home: 'होम',
   cityTwin: '3D सिटी ट्विन',
   predictiveAi: 'पूर्वानुमानित AI',
@@ -314,6 +361,30 @@ const hi: TranslationKeys = {
   resolutionNotes: 'समाधान नोट्स दर्ज करें...',
   qualityScore: 'गुणवत्ता स्कोर',
 
+  // 3D City Twin Viewport Controls
+  nightView: 'नाइट व्यू',
+  daylight: 'डेलाइट व्यू',
+  clearWeather: '☀️ साफ मौसम',
+  rainMode: '🌧️ बारिश मोड',
+  monsoonStorm: '⚡ मानसून तूफान',
+  fogGrid: '🌫️ कोहरा ग्रिड',
+  emergencyFocus: 'आपातकालीन फोकस',
+  fullscreenTwin: 'फुलस्क्रीन 3D ट्विन खोलें',
+  orbitZoom: 'ऑर्बिट और ज़ूम नियंत्रण',
+  clickBuildings: 'विभागीय भवनों पर क्लिक करें',
+  clickDefectPins: 'दोष पिनों पर क्लिक करें',
+  weatherEmergency: 'मौसम और आपातकालीन फोकस',
+
+  // Report Issue Extras
+  voiceRecord: 'वॉइस नोट रिकॉर्डिंग',
+  voiceRecordDesc: 'अपनी क्षेत्रीय भाषा में दोष का वर्णन करने के लिए माइक दबाएं',
+  locationLocked: 'स्वायत्त जियो-टारगेटिंग लॉक',
+  gpsAccuracy: 'जीपीएस सेंसर सटीकता',
+  wardAssigned: 'नगर निगम वार्ड आवंटित',
+  duplicateWarning: '500 मीटर के भीतर डुप्लिकेट शिकायत पाई गई',
+  rewardCancelled: 'पुरस्कार रद्द (0 अंक दिए गए)',
+  pointsEarned: '+50 नागरिक पुरस्कार अंक दिए गए',
+
   citizenPortal: 'नागरिक डैशबोर्ड',
   totalReports: 'कुल रिपोर्ट',
   resolved: 'हल हो गया',
@@ -338,7 +409,7 @@ const hi: TranslationKeys = {
 };
 
 // Tamil translations
-const ta: TranslationKeys = {
+const ta: TranslationKeys = { ...en,
   home: 'முகப்பு',
   cityTwin: '3D நகர டிஜிட்டல் ட்வின்',
   predictiveAi: 'முன்னறிவிப்பு AI',
@@ -419,6 +490,30 @@ const ta: TranslationKeys = {
   resolutionNotes: 'தீர்வு குறிப்புகள் உள்ளிடவும்...',
   qualityScore: 'தரம் மதிப்பெண்',
 
+  // 3D City Twin Viewport Controls
+  nightView: 'இரவு காட்சி',
+  daylight: 'பகல் காட்சி',
+  clearWeather: '☀️ தெளிவான வானிலை',
+  rainMode: '🌧️ மழை பயன்முறை',
+  monsoonStorm: '⚡ புயல் மழை',
+  fogGrid: '🌫️ பனிமூட்டம்',
+  emergencyFocus: 'அவசர கவனம்',
+  fullscreenTwin: 'முழுத்திரை 3D டிஜிட்டல் ட்வின் திற',
+  orbitZoom: 'சுழற்சி மற்றும் ஜூம் கட்டுப்பாடுகள்',
+  clickBuildings: 'துறை கட்டிடங்களை கிளிக் செய்யவும்',
+  clickDefectPins: 'குறைபாடு பின்களை கிளிக் செய்யவும்',
+  weatherEmergency: 'வானிலை & அவசர கவனம்',
+
+  // Report Issue Extras
+  voiceRecord: 'குரல் பதிவு',
+  voiceRecordDesc: 'உங்கள் மொழியில் குறையை விவரிக்க மைக்கை அழுத்தவும்',
+  locationLocked: 'GPS இருப்பிட மேட்ரிக்ஸ் பூட்டப்பட்டது',
+  gpsAccuracy: 'GPS சென்சார் துல்லியம்',
+  wardAssigned: 'ஒதுக்கப்பட்ட நகராட்சி வார்டு',
+  duplicateWarning: '500 மீட்டருக்குள் போலி/நகல் புகார் கண்டறியப்பட்டது',
+  rewardCancelled: 'வெகுமதி ரத்து செய்யப்பட்டது (0 புள்ளிகள்)',
+  pointsEarned: '+50 குடிமக்கள் வெகுமதி புள்ளிகள் வழங்கப்பட்டன',
+
   citizenPortal: 'குடிமக்கள் டாஷ்போர்டு',
   totalReports: 'மொத்த புகார்கள்',
   resolved: 'தீர்வு',
@@ -443,7 +538,7 @@ const ta: TranslationKeys = {
 };
 
 // Telugu translations
-const te: TranslationKeys = {
+const te: TranslationKeys = { ...en,
   home: 'హోమ్',
   cityTwin: '3D సిటీ ట్విన్',
   predictiveAi: 'అంచనా AI',
