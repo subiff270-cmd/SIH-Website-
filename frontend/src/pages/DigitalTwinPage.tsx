@@ -25,6 +25,7 @@ import { SmartCityCanvas } from '../components/3d/SmartCityCanvas';
 import { PredictiveAnalyticsWidget } from '../components/ai/PredictiveAnalyticsWidget';
 import { useIssues } from '../context/IssueContext';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import { Complaint } from '../types';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -32,6 +33,7 @@ export const DigitalTwinPage: React.FC = () => {
   const navigate = useNavigate();
   const { complaints } = useIssues();
   const { switchRole } = useAuth();
+  const { t } = useLanguage();
 
   // Controls State
   const [activeDeptFilter, setActiveDeptFilter] = useState<string>('ALL');
@@ -52,15 +54,15 @@ export const DigitalTwinPage: React.FC = () => {
   // Department metadata helper
   const getDeptInfo = (buildingName: string) => {
     if (buildingName.includes('Road') || buildingName.includes('PWD')) {
-      return { abbr: 'PWD', name: 'Public Works Dept', color: 'cyan', icon: Wrench, issues: 'Potholes, Road Cuts, Footpaths' };
+      return { abbr: 'PWD', name: t.pwdName, color: 'cyan', icon: Wrench, issues: t.pwdDesc };
     }
     if (buildingName.includes('Waste') || buildingName.includes('Solid')) {
-      return { abbr: 'SWM', name: 'Solid Waste Operations', color: 'emerald', icon: Trash2, issues: 'Garbage Spills, Dumping' };
+      return { abbr: 'SWM', name: t.swmName, color: 'emerald', icon: Trash2, issues: t.swmDesc };
     }
     if (buildingName.includes('Water') || buildingName.includes('Sewerage')) {
-      return { abbr: 'WSD', name: 'Water & Sewerage Board', color: 'blue', icon: Droplets, issues: 'Pipeline Leaks, Overflow' };
+      return { abbr: 'WSD', name: t.wsdName, color: 'blue', icon: Droplets, issues: t.wsdDesc };
     }
-    return { abbr: 'ELEC', name: 'Electrical & Lighting Division', color: 'amber', icon: Zap, issues: 'Street Lights, Transformers' };
+    return { abbr: 'ELEC', name: t.elecName, color: 'amber', icon: Zap, issues: t.elecDesc };
   };
 
   const activeBuildingInfo = selectedDeptBuilding ? getDeptInfo(selectedDeptBuilding) : null;
@@ -77,10 +79,10 @@ export const DigitalTwinPage: React.FC = () => {
               Real-Time 3D Smart City Neural Matrix
             </div>
             <h1 className="text-3xl md:text-4xl font-extrabold font-display">
-              3D Smart City Digital Twin
+              {t.twinPageTitle}
             </h1>
             <p className="text-xs text-slate-400 font-mono mt-1">
-              Click 3D buildings & defect beacons to inspect telemetry, live camera photos & dispatch field workers.
+              {t.twinPageSub}
             </p>
           </div>
 
@@ -91,7 +93,7 @@ export const DigitalTwinPage: React.FC = () => {
               className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-mono text-slate-200 flex items-center gap-1.5 hover:border-cyan-400"
             >
               {isNight ? <Moon className="w-3.5 h-3.5 text-purple-400" /> : <Sun className="w-3.5 h-3.5 text-amber-400" />}
-              {isNight ? 'Night Mode' : 'Daylight'}
+              {isNight ? t.nightView : t.daylight}
             </button>
 
             <select
@@ -99,17 +101,17 @@ export const DigitalTwinPage: React.FC = () => {
               onChange={(e) => setWeather(e.target.value as any)}
               className="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs font-mono text-cyan-300 outline-none"
             >
-              <option value="sunny">☀️ Clear Weather</option>
-              <option value="rain">🌧️ Rain Mode</option>
-              <option value="storm">⚡ Monsoon Storm</option>
-              <option value="fog">🌫️ Fog Grid</option>
+              <option value="sunny">{t.clearWeather}</option>
+              <option value="rain">{t.rainMode}</option>
+              <option value="storm">{t.monsoonStorm}</option>
+              <option value="fog">{t.fogGrid}</option>
             </select>
 
             <button
               onClick={handleEmergencyTrigger}
               className="btn-neon px-3.5 py-1.5 rounded-xl bg-rose-600 text-white font-mono font-bold text-xs shadow-glowRose flex items-center gap-1.5"
             >
-              <Flame className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> Emergency Focus
+              <Flame className="w-3.5 h-3.5 text-amber-300 animate-pulse" /> {t.emergencyFocus}
             </button>
           </div>
         </div>
@@ -118,11 +120,11 @@ export const DigitalTwinPage: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           <span className="text-xs font-mono text-slate-400 mr-1">Filter 3D Hub:</span>
           {[
-            { label: 'All City Defect Beacons', code: 'ALL' },
-            { label: 'PWD Roads (🛣️)', code: 'PWD_ROADS' },
-            { label: 'Solid Waste (♻️)', code: 'SWM_CLEAN' },
-            { label: 'Water Board (💧)', code: 'WATER_DEPT' },
-            { label: 'Electrical Grid (⚡)', code: 'ELEC_LIGHT' },
+            { label: t.filterAllBeacons, code: 'ALL' },
+            { label: `${t.filterPwdRoads} (🛣️)`, code: 'PWD_ROADS' },
+            { label: `${t.filterSolidWaste} (♻️)`, code: 'SWM_CLEAN' },
+            { label: `${t.filterWaterBoard} (💧)`, code: 'WATER_DEPT' },
+            { label: `${t.filterElectricalGrid} (⚡)`, code: 'ELEC_LIGHT' },
           ].map((dept) => (
             <button
               key={dept.code}

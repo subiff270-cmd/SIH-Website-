@@ -55,6 +55,49 @@ type TranslationKeys = {
   predictiveTitle: string;
   predictiveSub: string;
 
+  // Department Cards
+  pwdName: string;
+  pwdDesc: string;
+  swmName: string;
+  swmDesc: string;
+  wsdName: string;
+  wsdDesc: string;
+  elecName: string;
+  elecDesc: string;
+  swdName: string;
+  swdDesc: string;
+  safeName: string;
+  safeDesc: string;
+  activeComplaints: string;
+  viewDeptTickets: string;
+
+  // Digital Twin Page & Viewport
+  twinPageTitle: string;
+  twinPageSub: string;
+  filterAllBeacons: string;
+  filterPwdRoads: string;
+  filterSolidWaste: string;
+  filterWaterBoard: string;
+  filterElectricalGrid: string;
+  neuralGridTitle: string;
+  totalReported: string;
+  slaResolved: string;
+  emergencyAlertSent: string;
+
+  // Predictive Risk Forecasts
+  predictiveRiskTitle: string;
+  predictiveRiskSub: string;
+  forecasted48h: string;
+  forecasted12h: string;
+  forecasted6h: string;
+  riskIndex: string;
+  aiRiskDrivers: string;
+  suggestedAction: string;
+  dispatchCrewBtn: string;
+  workerDispatchedModalTitle: string;
+  emergencyPipeRupture: string;
+  officerNotified: string;
+
   // Report Issue Page
   reportTitle: string;
   reportSubtitle: string;
@@ -188,6 +231,49 @@ const en: TranslationKeys = {
   faqSub: 'Everything you need to know about CivicAI Smart City OS, reporting complaints, earning rewards, and officer workflows.',
   predictiveTitle: 'Predictive Civic Maintenance Hub',
   predictiveSub: 'Instead of waiting for complaints, predict future civic problems using historical complaints, rainfall, traffic density, and road age.',
+
+  // Department Cards
+  pwdName: 'Public Works Dept',
+  pwdDesc: 'Potholes, Road Damage, Footpaths',
+  swmName: 'Solid Waste Mgmt',
+  swmDesc: 'Garbage Overflow, Illegal Dumping',
+  wsdName: 'Water Supply Dept',
+  wsdDesc: 'Water Leaks, Pipeline Breaks',
+  elecName: 'Electrical Division',
+  elecDesc: 'Broken Lights, Transformer Issues',
+  swdName: 'Storm Water Drains',
+  swdDesc: 'Drain Blocks, Flooding, Manhole',
+  safeName: 'Public Safety',
+  safeDesc: 'Fallen Trees, Hazards',
+  activeComplaints: 'Active Complaints',
+  viewDeptTickets: 'View Department Live Tickets',
+
+  // Digital Twin Page & Viewport
+  twinPageTitle: '3D Smart City Digital Twin',
+  twinPageSub: 'Click 3D buildings & defect beacons to inspect telemetry, live camera photos & dispatch field workers.',
+  filterAllBeacons: 'All City Defect Beacons',
+  filterPwdRoads: 'PWD Roads',
+  filterSolidWaste: 'Solid Waste',
+  filterWaterBoard: 'Water Board',
+  filterElectricalGrid: 'Electrical Grid',
+  neuralGridTitle: 'Neural Triage Grid',
+  totalReported: 'TOTAL REPORTED',
+  slaResolved: 'SLA RESOLVED',
+  emergencyAlertSent: '🚨 EMERGENCY ALERT: Field Worker Unit #W-104 Dispatched & Officer Alerted!',
+
+  // Predictive Risk Forecasts
+  predictiveRiskTitle: 'Predictive Risk Forecasts ("Next Pothole Likely Here")',
+  predictiveRiskSub: 'Analyzes historical defect rates, monsoon rainfall, traffic density & pipe pressure to prevent failures before citizens report them.',
+  forecasted48h: 'Forecasted in next 48 Hours',
+  forecasted12h: 'Forecasted in next 12 Hours',
+  forecasted6h: 'Forecasted in next 6 Hours',
+  riskIndex: 'Risk Index',
+  aiRiskDrivers: 'AI RISK DRIVERS',
+  suggestedAction: 'SUGGESTED PREEMPTIVE ACTION',
+  dispatchCrewBtn: 'Dispatch Preemptive Maintenance Crew',
+  workerDispatchedModalTitle: '🚨 CRITICAL EMERGENCY WORKER DISPATCH ACTIVE',
+  emergencyPipeRupture: 'Pressurized Water Main Pipe Rupture (Central Pipeline Line 4 - Ward 8)',
+  officerNotified: 'Chief Municipal Officer Alerted + Worker Unit #W-104 Dispatched via Priority Route',
 
   reportTitle: 'Report a Civic Issue',
   reportSubtitle: 'Upload your real camera photo, record voice notes, and let CivicAI auto-detect category & merge duplicates.',

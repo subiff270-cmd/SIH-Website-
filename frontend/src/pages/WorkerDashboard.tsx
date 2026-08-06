@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { useIssues } from '../context/IssueContext';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 import { SmartCityCanvas } from '../components/3d/SmartCityCanvas';
 
 type VerifyPhase = 'idle' | 'scanning_before' | 'scanning_after' | 'comparing' | 'passed' | 'failed';
@@ -46,6 +47,7 @@ const afterPresets = [
 export const WorkerDashboard: React.FC = () => {
   const { complaints, notifications, resolveIssueWithPhoto, clearNotifications } = useIssues();
   const { currentUser } = useAuth();
+  const { t } = useLanguage();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [activeTab, setActiveTab] = useState<'tasks' | '3d_nav'>('tasks');

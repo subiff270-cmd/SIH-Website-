@@ -114,12 +114,12 @@ export const HomePage: React.FC = () => {
   ];
 
   const departments = [
-    { name: 'Public Works Dept', abbr: 'PWD', icon: Wrench, color: 'cyan', issues: 'Potholes, Road Damage, Footpaths', count: complaints?.filter(c => c?.department?.name?.includes('Public Works') || c?.category === 'POTHOLE').length || 12 },
-    { name: 'Solid Waste Mgmt', abbr: 'SWM', icon: Trash2, color: 'emerald', issues: 'Garbage Overflow, Illegal Dumping', count: complaints?.filter(c => c?.department?.name?.includes('Waste') || c?.category === 'GARBAGE').length || 8 },
-    { name: 'Water Supply Dept', abbr: 'WSD', icon: Droplets, color: 'blue', issues: 'Water Leaks, Pipeline Breaks', count: complaints?.filter(c => c?.department?.name?.includes('Water') || c?.category === 'WATER_LEAKAGE').length || 6 },
-    { name: 'Electrical Division', abbr: 'ELEC', icon: Zap, color: 'amber', issues: 'Broken Lights, Transformer Issues', count: complaints?.filter(c => c?.department?.name?.includes('Electrical') || c?.category === 'STREET_LIGHT').length || 5 },
-    { name: 'Storm Water Drains', abbr: 'SWD', icon: Droplets, color: 'purple', issues: 'Drain Blocks, Flooding, Manhole', count: complaints?.filter(c => c?.category === 'DRAINAGE' || c?.category === 'MANHOLE').length || 4 },
-    { name: 'Public Safety', abbr: 'SAFE', icon: Shield, color: 'rose', issues: 'Fallen Trees, Hazards', count: complaints?.filter(c => c?.category === 'FALLEN_TREE').length || 3 },
+    { name: t.pwdName, abbr: 'PWD', icon: Wrench, color: 'cyan', issues: t.pwdDesc, count: complaints?.filter(c => c?.department?.name?.includes('Public Works') || c?.category === 'POTHOLE').length || 12 },
+    { name: t.swmName, abbr: 'SWM', icon: Trash2, color: 'emerald', issues: t.swmDesc, count: complaints?.filter(c => c?.department?.name?.includes('Waste') || c?.category === 'GARBAGE').length || 8 },
+    { name: t.wsdName, abbr: 'WSD', icon: Droplets, color: 'blue', issues: t.wsdDesc, count: complaints?.filter(c => c?.department?.name?.includes('Water') || c?.category === 'WATER_LEAKAGE').length || 6 },
+    { name: t.elecName, abbr: 'ELEC', icon: Zap, color: 'amber', issues: t.elecDesc, count: complaints?.filter(c => c?.department?.name?.includes('Electrical') || c?.category === 'STREET_LIGHT').length || 5 },
+    { name: t.swdName, abbr: 'SWD', icon: Droplets, color: 'purple', issues: t.swdDesc, count: complaints?.filter(c => c?.category === 'DRAINAGE' || c?.category === 'MANHOLE').length || 4 },
+    { name: t.safeName, abbr: 'SAFE', icon: Shield, color: 'rose', issues: t.safeDesc, count: complaints?.filter(c => c?.category === 'FALLEN_TREE').length || 3 },
   ];
 
   const techStack = [
@@ -523,7 +523,7 @@ export const HomePage: React.FC = () => {
 
                   <div className="flex items-center justify-between pt-2 border-t border-slate-800/80">
                     <span className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> Active Complaints
+                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" /> {t.activeComplaints}
                     </span>
                     <span className="text-base font-extrabold text-cyan-300 font-mono">{dept.count}</span>
                   </div>
@@ -532,7 +532,7 @@ export const HomePage: React.FC = () => {
                     type="button"
                     className="w-full py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-mono font-bold group-hover:bg-cyan-500 group-hover:text-black group-hover:border-cyan-400 transition-all flex items-center justify-center gap-1.5"
                   >
-                    <Filter className="w-3.5 h-3.5" /> View Department Live Tickets
+                    <Filter className="w-3.5 h-3.5" /> {t.viewDeptTickets}
                   </button>
                 </motion.div>
               );

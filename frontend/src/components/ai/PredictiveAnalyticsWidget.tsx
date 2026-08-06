@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Brain, CloudRain, AlertTriangle, ArrowRight, CheckCircle2, Shield, Wrench, Activity } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Brain, CloudRain, AlertTriangle, ArrowRight, CheckCircle2, Shield, Wrench, Activity, Flame, ShieldAlert, X } from 'lucide-react';
+import { useLanguage } from '../../context/LanguageContext';
 
 interface RiskPrediction {
   id: string;
@@ -14,6 +15,10 @@ interface RiskPrediction {
 }
 
 export const PredictiveAnalyticsWidget: React.FC = () => {
+  const { t } = useLanguage();
+  const [showEmergencyModal, setShowEmergencyModal] = useState<boolean>(false);
+  const [dispatchedItem, setDispatchedItem] = useState<RiskPrediction | null>(null);
+
   const [predictions, setPredictions] = useState<RiskPrediction[]>([
     {
       id: 'pred_1',
@@ -47,10 +52,12 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
     }
   ]);
 
-  const handleDispatch = (id: string) => {
+  const handleDispatch = (pred: RiskPrediction) => {
     setPredictions((prev) =>
-      prev.map((p) => (p.id === id ? { ...p, isDispatched: true } : p))
+      prev.map((p) => (p.id === pred.id ? { ...p, isDispatched: true } : p))
     );
+    setDispatchedItem(pred);
+    setShowEmergencyModal(true);
   };
 
   return (
@@ -66,10 +73,10 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
             AI Predictive Infrastructure Engine
           </div>
           <h2 className="text-xl md:text-2xl font-bold font-display text-white">
-            Predictive Risk Forecasts ("Next Pothole Likely Here")
+            {t.predictiveRiskTitle}
           </h2>
           <p className="text-xs text-slate-400 font-mono">
-            Analyzes historical defect rates, monsoon rainfall, traffic density & pipe pressure to prevent failures before citizens report them.
+            {t.predictiveRiskSub}
           </p>
         </div>
 
@@ -102,7 +109,7 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
                     ? 'bg-rose-500/20 text-rose-400 border-rose-500/40'
                     : 'bg-amber-500/20 text-amber-400 border-amber-500/40'
                 }`}>
-                  Risk Index {pred.riskScore}%
+                  {t.riskIndex} {pred.riskScore}%
                 </span>
               </div>
 
@@ -114,7 +121,7 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
 
               {/* AI Risk Factors */}
               <div className="space-y-1 pt-1">
-                <span className="text-[10px] font-mono text-slate-500 block uppercase">AI Risk Drivers:</span>
+                <span className="text-[10px] font-mono text-slate-500 block uppercase">{t.aiRiskDrivers}:</span>
                 {pred.reasons.map((r, i) => (
                   <div key={i} className="text-[11px] text-slate-300 font-mono flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-purple-400 shrink-0" />
@@ -126,7 +133,7 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
 
             {/* Suggested Action & Button */}
             <div className="pt-3 border-t border-slate-800/80 space-y-2">
-              <span className="text-[10px] text-slate-400 font-mono block">SUGGESTED PREEMPTIVE ACTION:</span>
+              <span className="text-[10px] text-slate-400 font-mono block">{t.suggestedAction}:</span>
               <p className="text-xs font-semibold text-slate-200">{pred.suggestedAction}</p>
 
               {pred.isDispatched ? (
@@ -135,16 +142,96 @@ export const PredictiveAnalyticsWidget: React.FC = () => {
                 </div>
               ) : (
                 <button
-                  onClick={() => handleDispatch(pred.id)}
+                  onClick={() => handleDispatch(pred)}
                   className="w-full py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs font-mono shadow-glowPurple flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <Wrench className="w-3.5 h-3.5" /> Dispatch Preemptive Maintenance Crew
+                  <Wrench className="w-3.5 h-3.5" /> {t.dispatchCrewBtn}
                 </button>
               )}
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* 🚨 CRITICAL EMERGENCY WORKER & OFFICER DISPATCH MODAL */}
+      <AnimatePresence>
+        {showEmergencyModal && dispatchedItem && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4"
+            onClick={() => setShowEmergencyModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="glass-card max-w-lg w-full p-6 rounded-3xl border-2 border-rose-500/60 shadow-[0_0_50px_rgba(244,63,94,0.6)] space-y-5 bg-slate-950"
+            >
+              <div className="flex items-center justify-between border-b border-rose-500/30 pb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-2xl bg-rose-500/20 border border-rose-500/50 flex items-center justify-center text-rose-400 shadow-glowRose">
+                    <Flame className="w-7 h-7 text-amber-300 animate-pulse" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono font-extrabold text-rose-400 uppercase tracking-widest block">
+                      EMERGENCY OVERRIDE DISPATCH ACTIVE
+                    </span>
+                    <h3 className="text-lg font-bold text-white font-display">
+                      {t.workerDispatchedModalTitle}
+                    </h3>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setShowEmergencyModal(false)}
+                  className="p-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="space-y-3 font-mono text-xs">
+                <div className="p-3.5 rounded-2xl bg-rose-950/40 border border-rose-500/40 space-y-1">
+                  <span className="text-[10px] text-rose-300 uppercase font-bold">EMERGENCY TARGET:</span>
+                  <p className="text-sm font-bold text-white">{dispatchedItem.predictedDefect}</p>
+                  <span className="text-[11px] text-cyan-300 block">{dispatchedItem.location}</span>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="p-3 rounded-2xl bg-slate-900 border border-purple-500/30 space-y-1">
+                    <span className="text-[10px] text-slate-400 block uppercase">OFFICER ALERT</span>
+                    <div className="flex items-center gap-1.5 text-purple-300 font-bold">
+                      <ShieldAlert className="w-4 h-4 text-purple-400" />
+                      <span>Sent to Water Board HQ</span>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-2xl bg-slate-900 border border-emerald-500/30 space-y-1">
+                    <span className="text-[10px] text-slate-400 block uppercase">WORKER CREW STATUS</span>
+                    <div className="flex items-center gap-1.5 text-emerald-300 font-bold">
+                      <Wrench className="w-4 h-4 text-emerald-400 animate-pulse" />
+                      <span>Unit #W-104 (ETA: 4 Min)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-[11px] text-slate-400 leading-relaxed bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                  ⚡ <strong>Autonomous Emergency Dispatch:</strong> Worker Crew #W-104 has been navigated to site via high-priority emergency routing. Municipal Chief Officer was automatically alerted with GPS lock.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setShowEmergencyModal(false)}
+                className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-rose-600 to-purple-600 text-white font-bold font-mono text-xs shadow-glowRose flex items-center justify-center gap-2"
+              >
+                <CheckCircle2 className="w-4 h-4" /> Acknowledge Emergency Dispatch & Monitor GPS
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
