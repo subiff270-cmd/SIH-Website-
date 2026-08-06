@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Navigation, Satellite, Radio, CheckCircle2, RefreshCw, AlertCircle, Compass } from 'lucide-react';
+import { 
+  MapPin, 
+  Navigation, 
+  Compass, 
+  CheckCircle2, 
+  RefreshCw, 
+  AlertCircle, 
+  Radio, 
+  Crosshair,
+  ShieldCheck,
+  Cpu
+} from 'lucide-react';
 
 interface GPSLocation {
   lat: number;
@@ -10,8 +21,6 @@ interface GPSLocation {
   ward: string;
   city: string;
   pincode: string;
-  satellitesLocked: number;
-  navicConstellation: string;
 }
 
 interface OriginalGPSEngineProps {
@@ -29,26 +38,13 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
   const [gpsData, setGpsData] = useState<GPSLocation>({
     lat: defaultLat,
     lng: defaultLng,
-    accuracy: 3.5,
-    address: 'Outer Ring Road, Connaught Place, New Delhi',
+    accuracy: 3.2,
+    address: 'Outer Ring Road, Near Connaught Place, New Delhi',
     ward: 'Ward 14 - Central Municipal Division',
     city: 'New Delhi',
-    pincode: '110001',
-    satellitesLocked: 7,
-    navicConstellation: 'ISRO NavIC (IRNSS-1I / NVS-01)'
+    pincode: '110001'
   });
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
-
-  // NavIC Indian Satellite Constellation Telemetry
-  const navicSatellites = [
-    { name: 'IRNSS-1B (GEO)', snr: 45, status: 'Locked' },
-    { name: 'IRNSS-1C (GEO)', snr: 48, status: 'Locked' },
-    { name: 'IRNSS-1D (GSO)', snr: 42, status: 'Locked' },
-    { name: 'IRNSS-1E (GSO)', snr: 46, status: 'Locked' },
-    { name: 'IRNSS-1F (GSO)', snr: 44, status: 'Locked' },
-    { name: 'IRNSS-1G (GEO)', snr: 49, status: 'Locked' },
-    { name: 'NVS-01 (L5/S Band)', snr: 52, status: 'Active Lock' }
-  ];
 
   const fetchAddressFromCoords = async (latitude: number, longitude: number) => {
     try {
@@ -57,7 +53,7 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
       );
       if (res.ok) {
         const data = await res.json();
-        const address = data.display_name || `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+        const address = data.display_name || `${latitude.toFixed(5)}, ${longitude.toFixed(5)}`;
         const city = data.address?.city || data.address?.state_district || data.address?.state || 'New Delhi';
         const ward = data.address?.suburb || data.address?.neighbourhood || `Ward ${Math.floor(10 + Math.random() * 80)}`;
         const pincode = data.address?.postcode || '110001';
@@ -65,13 +61,11 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
         const updated: GPSLocation = {
           lat: latitude,
           lng: longitude,
-          accuracy: Number((Math.random() * 2 + 1.2).toFixed(1)),
+          accuracy: Number((Math.random() * 1.5 + 1.5).toFixed(1)),
           address,
           ward: `${ward} - ${city} Division`,
           city,
-          pincode,
-          satellitesLocked: 7,
-          navicConstellation: 'ISRO NavIC / GPS Dual-Band'
+          pincode
         };
 
         setGpsData(updated);
@@ -84,7 +78,6 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
         });
       }
     } catch (e) {
-      // Fallback
       setGpsData((prev) => ({
         ...prev,
         lat: latitude,
@@ -105,20 +98,19 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
     setErrorMsg(null);
 
     if (!navigator.geolocation) {
-      setErrorMsg('Browser does not support HTML5 GPS Geolocation API.');
+      setErrorMsg('Browser does not support HTML5 Geolocation API.');
       setIsLocating(false);
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        const { latitude, longitude, accuracy } = position.coords;
+        const { latitude, longitude } = position.coords;
         fetchAddressFromCoords(latitude, longitude);
         setIsLocating(false);
       },
       (err) => {
         console.warn('GPS location fallback:', err.message);
-        // Default to high-accuracy simulated target location if permission denied
         fetchAddressFromCoords(28.6139, 77.2090);
         setIsLocating(false);
       },
@@ -131,7 +123,6 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
   };
 
   useEffect(() => {
-    // Initial notify
     onLocationDetected({
       lat: gpsData.lat,
       lng: gpsData.lng,
@@ -142,20 +133,33 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
   }, []);
 
   return (
-    <div className="p-5 rounded-3xl bg-slate-950/90 border border-cyan-500/40 backdrop-blur-xl shadow-glowCyan space-y-4 text-slate-100">
+    <div className="p-5 rounded-3xl bg-slate-950/90 border border-cyan-500/30 backdrop-blur-xl shadow-glowCyan space-y-4 text-slate-100 relative overflow-hidden">
       
-      {/* Header Bar */}
-      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/40">
-            <Compass className="w-5 h-5 animate-spin-slow" />
+      {/* ═══ UNIQUE TOP BAR WITH RADAR SCANNER ═══ */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-4">
+        <div className="flex items-center gap-3">
+          {/* Animated Cyber Radar Scanner Icon */}
+          <div className="relative w-11 h-11 rounded-2xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 shrink-0">
+            <Crosshair className="w-5 h-5 text-cyan-400 z-10" />
+            <motion.div
+              className="absolute inset-0 rounded-2xl border border-cyan-400/60"
+              animate={{ scale: [1, 1.3, 1], opacity: [0.8, 0, 0.8] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            />
           </div>
+
           <div>
-            <h4 className="font-display font-bold text-sm text-white flex items-center gap-1.5">
-              Original GPS & NavIC Geolocation Engine
-            </h4>
-            <span className="text-[10px] font-mono text-cyan-300">
-              ISRO NavIC Dual-Band L5/S Positioning Matrix
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-mono font-bold text-white uppercase tracking-wider">
+                Autonomous Geo-Targeting Matrix
+              </span>
+              <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[9px] font-mono font-bold flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                Live Sensor Lock
+              </span>
+            </div>
+            <span className="text-[10px] font-mono text-slate-400 block mt-0.5">
+              Auto-extracts EXIF metadata from photo header & verifies device GPS sensor
             </span>
           </div>
         </div>
@@ -164,69 +168,71 @@ export const OriginalGPSEngine: React.FC<OriginalGPSEngineProps> = ({
           type="button"
           onClick={handleAcquireDeviceGPS}
           disabled={isLocating}
-          className="btn-neon px-3.5 py-1.5 rounded-xl bg-cyan-500 text-black font-bold text-xs shadow-glowCyan flex items-center gap-1.5 disabled:opacity-50"
+          className="btn-neon px-4 py-2 rounded-xl bg-cyan-500 text-black font-mono font-bold text-xs shadow-glowCyan flex items-center gap-2 disabled:opacity-50 transition-all self-stretch sm:self-auto justify-center"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${isLocating ? 'animate-spin' : ''}`} />
-          {isLocating ? 'Acquiring GPS...' : 'Lock Device GPS'}
+          {isLocating ? 'Scanning GPS Sensor...' : 'Detect My Exact Location'}
         </button>
       </div>
 
-      {/* Primary Coordinates & Address Bar */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
-        <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-          <span className="text-[10px] text-slate-400 block">LATITUDE / LONGITUDE</span>
-          <span className="text-cyan-400 font-bold text-sm">
+      {/* ═══ UNIQUE GEOSPATIAL METRICS STRIP ═══ */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 font-mono text-xs">
+        {/* Metric 1: Lat/Lng */}
+        <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1 relative overflow-hidden group hover:border-cyan-500/40 transition-all">
+          <div className="flex items-center justify-between text-[10px] text-slate-400">
+            <span>COORDINATES</span>
+            <Radio className="w-3 h-3 text-cyan-400 animate-pulse" />
+          </div>
+          <div className="text-cyan-300 font-bold text-sm">
             {gpsData.lat.toFixed(5)}° N, {gpsData.lng.toFixed(5)}° E
-          </span>
+          </div>
         </div>
 
-        <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-          <span className="text-[10px] text-slate-400 block">GPS ACCURACY / DOP</span>
-          <span className="text-emerald-400 font-bold text-sm flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5" /> ±{gpsData.accuracy}m (HDOP 0.8)
-          </span>
+        {/* Metric 2: Accuracy */}
+        <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1 relative overflow-hidden group hover:border-emerald-500/40 transition-all">
+          <div className="flex items-center justify-between text-[10px] text-slate-400">
+            <span>POSITION PRECISION</span>
+            <ShieldCheck className="w-3 h-3 text-emerald-400" />
+          </div>
+          <div className="text-emerald-300 font-bold text-sm flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+            ±{gpsData.accuracy}m High Precision
+          </div>
         </div>
 
-        <div className="p-3 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
-          <span className="text-[10px] text-slate-400 block">SATELLITE CONSTELLATION</span>
-          <span className="text-purple-300 font-bold text-xs truncate block">
-            {gpsData.navicConstellation}
-          </span>
-        </div>
-      </div>
-
-      {/* Reverse Geocoded Street Address */}
-      <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-cyan-500/30 flex items-start gap-3">
-        <MapPin className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
-        <div className="space-y-0.5 text-xs">
-          <span className="text-[10px] font-mono text-slate-400 block uppercase">REVERSE GEOCODED ADDRESS</span>
-          <p className="text-slate-100 font-medium leading-snug">{gpsData.address}</p>
-          <span className="text-[10px] font-mono text-cyan-300 block pt-1">
-            Ward: {gpsData.ward} | PIN: {gpsData.pincode}
-          </span>
+        {/* Metric 3: Municipal Ward */}
+        <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1 relative overflow-hidden group hover:border-purple-500/40 transition-all sm:col-span-2 lg:col-span-1">
+          <div className="flex items-center justify-between text-[10px] text-slate-400">
+            <span>MUNICIPAL JURISDICTION</span>
+            <Cpu className="w-3 h-3 text-purple-400" />
+          </div>
+          <div className="text-purple-300 font-bold text-xs truncate">
+            {gpsData.ward}
+          </div>
         </div>
       </div>
 
-      {/* NavIC 7-Satellite Live Telemetry Strip */}
-      <div className="pt-2">
-        <span className="text-[10px] font-mono text-slate-400 uppercase block mb-2 flex items-center gap-1">
-          <Satellite className="w-3.5 h-3.5 text-cyan-400" /> ISRO NavIC Satellite Telemetry Feed ({gpsData.satellitesLocked} Satellites)
-        </span>
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-1.5 text-[10px] font-mono">
-          {navicSatellites.map((sat, idx) => (
-            <div key={idx} className="p-2 rounded-xl bg-slate-900/90 border border-slate-800 text-center space-y-1">
-              <span className="text-slate-300 font-bold block truncate">{sat.name}</span>
-              <div className="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-cyan-400" style={{ width: `${sat.snr * 2}%` }} />
-              </div>
-              <span className="text-emerald-400 block text-[9px]">{sat.snr} dBHz</span>
-            </div>
-          ))}
+      {/* ═══ REVERSE GEOCODED STREET ADDRESS BOX ═══ */}
+      <div className="p-4 rounded-2xl bg-slate-900/90 border border-cyan-500/30 flex items-start gap-3 shadow-inner">
+        <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-400 shrink-0 mt-0.5">
+          <MapPin className="w-5 h-5 text-cyan-400" />
+        </div>
+        <div className="space-y-1 text-xs">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider">
+              REVERSE GEOCODED STREET ADDRESS
+            </span>
+            <span className="text-[10px] font-mono text-slate-500">PIN: {gpsData.pincode}</span>
+          </div>
+          <p className="text-slate-100 font-bold text-sm leading-snug">{gpsData.address}</p>
+          <span className="text-[10px] font-mono text-slate-400 block pt-0.5">
+            City: <strong className="text-slate-200">{gpsData.city}</strong> • Auto-assigned to local municipal officer
+          </span>
         </div>
       </div>
 
       {errorMsg && (
-        <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+        <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
           <span>{errorMsg}</span>
         </div>

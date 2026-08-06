@@ -19,6 +19,7 @@ import {
 import { useIssues } from '../context/IssueContext';
 import { useAuth } from '../context/AuthContext';
 import { SmartCityCanvas } from '../components/3d/SmartCityCanvas';
+import { PredictiveAnalyticsWidget } from '../components/ai/PredictiveAnalyticsWidget';
 
 export const OfficerDashboard: React.FC = () => {
   const { complaints, notifications, assignWorker, clearNotifications } = useIssues();
@@ -98,6 +99,9 @@ export const OfficerDashboard: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
+
+        {/* AI Predictive Infrastructure Analytics Widget ("Next Pothole Likely Here") */}
+        <PredictiveAnalyticsWidget />
 
         {/* OFFICER TABS */}
         <div className="flex flex-wrap items-center gap-3 border-b border-slate-800 pb-3">

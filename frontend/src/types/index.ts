@@ -1,6 +1,6 @@
 export type Role = 'citizen' | 'officer' | 'worker';
 
-export type SeverityLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
+export type SeverityLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL' | 'DANGEROUS';
 
 export type IssueStatus = 'SUBMITTED' | 'AI_VERIFIED' | 'ASSIGNED' | 'IN_PROGRESS' | 'COMPLETED';
 
@@ -13,7 +13,8 @@ export type IssueCategory =
   | 'FALLEN_TREE' 
   | 'ILLEGAL_DUMPING' 
   | 'DAMAGED_ROAD'
-  | 'MANHOLE';
+  | 'MANHOLE'
+  | 'NON_CIVIC_CONTENT';
 
 export interface LocationCoordinates {
   lat: number;
@@ -23,7 +24,28 @@ export interface LocationCoordinates {
   city: string;
 }
 
+export type SeverityScale = 'Small' | 'Medium' | 'Dangerous';
+export type DepthCategory = 'Shallow (2-5cm)' | 'Moderate (5-12cm)' | 'Deep Cavity (>12cm)';
+
+export interface AISpatialEstimation {
+  severityScale: SeverityScale;
+  damageAreaSqM: number;
+  approxWidthCm: number;
+  depthCategory: DepthCategory;
+  roadOccupancyPercent: number;
+  garbageVolumeCuM?: number;
+  floodAreaSqM?: number;
+  objectDetectionLabel: string;
+  segmentationMaskConfidence: number;
+  monocularDepthMapScore: number;
+  severityIndex: number;
+  priorityFormulaText: string;
+}
+
 export interface AIAnalysisResult {
+  isFake?: boolean;
+  fakeReason?: string;
+  priorityScore?: number;
   detectedCategory: IssueCategory;
   confidenceScore: number;
   severityScore: SeverityLevel;
@@ -32,6 +54,9 @@ export interface AIAnalysisResult {
   duplicateMatchFound: boolean;
   duplicateCount?: number;
   parentTicketId?: string;
+  rewardPointsGranted?: number;
+  duplicateCancelReason?: string;
+  spatialEstimation?: AISpatialEstimation;
   detectedObjects: { label: string; confidence: number; bbox: [number, number, number, number] }[];
   aiSummary: string;
 }

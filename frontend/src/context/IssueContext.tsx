@@ -81,42 +81,104 @@ export const IssueProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
 
     const lowerDesc = description.toLowerCase();
+    const lowerImg = imageUrl.toLowerCase();
+
+    // 1. AI Generated Image Filter Check
+    const aiKeywords = ['ai', 'ai_generated', 'midjourney', 'dall-e', 'stablediffusion', 'photoshop', 'synthetic', 'render', 'cgi', 'drawing', 'fake'];
+    if (aiKeywords.some(kw => lowerDesc.includes(kw) || lowerImg.includes(kw))) {
+      return {
+        isFake: true,
+        fakeReason: '⚠️ AI GENERATED PICTURE DETECTED: Synthetic / AI-generated photo rejected by YOLOv8 vision filter. Please capture a real original camera photo of an actual civic issue.',
+        detectedCategory: 'NON_CIVIC_CONTENT',
+        confidenceScore: 99.8,
+        severityScore: 'LOW',
+        priorityScore: 0,
+        urgencyIndex: 0,
+        suggestedDepartment: 'System Security Triage',
+        duplicateMatchFound: false,
+        detectedObjects: [],
+        aiSummary: 'REJECTED BY AI ENGINE: Photo detected as AI Generated / Synthetic Image.'
+      };
+    }
+
+    // 2. Real Civic Problem Verification (Rejects selfies, pets, furniture, clean scenes)
+    const nonCivicKeywords = ['meme', 'messi', 'trophy', 'player', 'celebrity', 'actor', 'cartoon', 'sports', 'football', 'selfie', 'cat', 'dog', 'food', 'table', 'chair', 'sofa', 'clean'];
+    if (nonCivicKeywords.some(kw => lowerDesc.includes(kw) || lowerImg.includes(kw))) {
+      return {
+        isFake: true,
+        fakeReason: '⚠️ NO CIVIC PROBLEM DETECTED: Uploaded photo contains no municipal infrastructure defect (pothole, garbage, water leak, broken streetlight, open drain). Submission blocked.',
+        detectedCategory: 'NON_CIVIC_CONTENT',
+        confidenceScore: 98.9,
+        severityScore: 'LOW',
+        priorityScore: 0,
+        urgencyIndex: 0,
+        suggestedDepartment: 'System Security Triage',
+        duplicateMatchFound: false,
+        detectedObjects: [],
+        aiSummary: 'REJECTED BY AI ENGINE: Photo contains no civic defect (Selfie / Furniture / Pet / Clean Scene).'
+      };
+    }
+
     let detectedCategory: IssueCategory = 'POTHOLE';
     let suggestedDepartment = 'Public Works Dept (PWD)';
-    let severityScore: SeverityLevel = 'MEDIUM';
-    let urgencyIndex = 6;
+    let severityScore: SeverityLevel = 'DANGEROUS';
+    let urgencyIndex = 9;
+    let priorityScore = 92;
 
     if (lowerDesc.includes('trash') || lowerDesc.includes('garbage') || lowerDesc.includes('waste')) {
       detectedCategory = 'GARBAGE';
       suggestedDepartment = 'Solid Waste Management';
       severityScore = 'HIGH';
-      urgencyIndex = 7;
+      urgencyIndex = 8;
+      priorityScore = 84;
     } else if (lowerDesc.includes('water') || lowerDesc.includes('pipe') || lowerDesc.includes('leak')) {
       detectedCategory = 'WATER_LEAKAGE';
       suggestedDepartment = 'Water Supply & Sewerage Board';
-      severityScore = 'CRITICAL';
-      urgencyIndex = 9;
+      severityScore = 'DANGEROUS';
+      urgencyIndex = 10;
+      priorityScore = 97;
+    } else if (lowerDesc.includes('light') || lowerDesc.includes('lamp') || lowerDesc.includes('pole')) {
+      detectedCategory = 'STREET_LIGHT';
+      suggestedDepartment = 'Electrical & Lighting Board';
+      severityScore = 'MEDIUM';
+      urgencyIndex = 5;
+      priorityScore = 62;
     }
 
     const nearDuplicate = complaints.find((c) => {
       const dLat = Math.abs(c.location.lat - lat);
       const dLng = Math.abs(c.location.lng - lng);
-      return dLat < 0.005 && dLng < 0.005 && c.category === detectedCategory;
+      const sameImg = c.imageUrl === imageUrl || (c.imageUrl.length > 30 && imageUrl.length > 30 && c.imageUrl.slice(-20) === imageUrl.slice(-20));
+      return (sameImg || (dLat < 0.005 && dLng < 0.005)) && c.category === detectedCategory;
     });
 
+    if (nearDuplicate) {
+      priorityScore = Math.min(100, priorityScore + 10);
+    }
+
+    const isDuplicate = !!nearDuplicate;
+
     return {
+      isFake: false,
+      priorityScore,
       detectedCategory,
-      confidenceScore: +(93.5 + Math.random() * 5.5).toFixed(1),
+      confidenceScore: +(95.5 + Math.random() * 3.8).toFixed(1),
       severityScore,
       urgencyIndex,
       suggestedDepartment,
-      duplicateMatchFound: !!nearDuplicate,
-      duplicateCount: nearDuplicate ? 1 : 0,
-      parentTicketId: nearDuplicate?.ticketNumber,
+      duplicateMatchFound: isDuplicate,
+      duplicateCount: isDuplicate ? 1 : 0,
+      parentTicketId: nearDuplicate?.ticketNumber || 'CIV-2026-8891',
+      rewardPointsGranted: isDuplicate ? 0 : 50,
+      duplicateCancelReason: isDuplicate
+        ? `⚠️ DUPLICATE COMPLAINT DETECTED: Merged into Master Ticket #${nearDuplicate?.ticketNumber || 'CIV-2026-8891'}. Reward points (+50 Pts) DENIED for duplicate submission to prevent reward gaming.`
+        : undefined,
       detectedObjects: [
         { label: `${detectedCategory.replace('_', ' ')} Defect`, confidence: 0.96, bbox: [120, 90, 460, 380] }
       ],
-      aiSummary: `FastAPI Neural Engine classified ${detectedCategory.replace('_', ' ')} with high confidence.`
+      aiSummary: isDuplicate
+        ? `DUPLICATE DETECTED: Merged with ${nearDuplicate?.ticketNumber || 'CIV-2026-8891'}. Priority boosted to ${priorityScore}/100. Citizen reward points cancelled.`
+        : `Neural Engine classified ${detectedCategory.replace('_', ' ')} with 97.4% confidence. +50 Reward Points granted!`
     };
   };
 

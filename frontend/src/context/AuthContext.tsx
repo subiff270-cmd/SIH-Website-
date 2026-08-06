@@ -20,7 +20,7 @@ interface AuthContextType {
   isAccountRegistered: (emailOrPhone: string) => boolean;
 }
 
-// Initial registered user database (3 roles)
+// Initial registered user database (EXACTLY 3 ROLES)
 const INITIAL_REGISTERED_USERS: User[] = [
   MOCK_USERS.citizen,
   MOCK_USERS.officer,
@@ -43,7 +43,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const saved = localStorage.getItem('civic_registered_users');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // Filter out any stale admin accounts
+          return parsed.filter((u) => u.role === 'citizen' || u.role === 'officer' || u.role === 'worker');
+        }
       } catch (e) {
         return INITIAL_REGISTERED_USERS;
       }
@@ -55,7 +59,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const saved = localStorage.getItem('civic_user');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        // Strict role validation (Exactly 3 roles)
+        if (parsed && (parsed.role === 'citizen' || parsed.role === 'officer' || parsed.role === 'worker')) {
+          return parsed;
+        }
       } catch (e) {
         return MOCK_USERS.citizen;
       }
@@ -68,10 +76,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [registeredUsers]);
 
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && (currentUser.role === 'citizen' || currentUser.role === 'officer' || currentUser.role === 'worker')) {
       localStorage.setItem('civic_user', JSON.stringify(currentUser));
     } else {
       localStorage.removeItem('civic_user');
+      setCurrentUser(MOCK_USERS.citizen);
     }
   }, [currentUser]);
 
@@ -84,58 +93,62 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const login = async (emailOrPhone: string, role: Role): Promise<User> => {
-    await new Promise((resolve) => setTimeout(resolve, 500));
     const query = emailOrPhone.trim().toLowerCase();
-
+    
+    // Check if account exists
     const existing = registeredUsers.find(
-      (u) => u.email.toLowerCase() === query || (u.phone && u.phone.toLowerCase() === query)
+      (u) => (u.email.toLowerCase() === query || (u.phone && u.phone.toLowerCase() === query))
     );
 
     if (!existing) {
-      throw new Error(`No account found for "${emailOrPhone}". Please click "Create New Account" to register first!`);
+      throw new Error(`Account "${emailOrPhone}" is not registered. Please create an account first.`);
     }
 
-    const userToSet: User = {
-      ...existing,
-      role: role || existing.role
-    };
-
-    setCurrentUser(userToSet);
-    return userToSet;
+    const updatedUser = { ...existing, role };
+    setCurrentUser(updatedUser);
+    return updatedUser;
   };
 
   const register = async (input: RegisterInput): Promise<User> => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
     const query = input.emailOrPhone.trim().toLowerCase();
+    
+    const alreadyExists = registeredUsers.some(
+      (u) => u.email.toLowerCase() === query || (u.phone && u.phone.toLowerCase() === query)
+    );
 
-    if (isAccountRegistered(query)) {
-      throw new Error(`An account with "${input.emailOrPhone}" is already registered. Please sign in!`);
+    if (alreadyExists) {
+      throw new Error(`Account "${input.emailOrPhone}" is already registered. Please sign in.`);
     }
 
-    const isEmail = query.includes('@');
     const newUser: User = {
-      id: `usr_${Date.now()}`,
+      id: `user_${Date.now()}`,
       name: input.name,
-      email: isEmail ? query : `${input.name.toLowerCase().replace(/\s+/g, '')}@civic.gov.in`,
-      phone: !isEmail ? query : '+91 98765 43210',
+      email: input.emailOrPhone.includes('@') ? input.emailOrPhone : `${input.name.toLowerCase().replace(/\s+/g, '')}@civicai.gov.in`,
+      phone: !input.emailOrPhone.includes('@') ? input.emailOrPhone : '+91 98765 00000',
       role: input.role,
       avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80',
       rewardPoints: 100
     };
 
-    setRegisteredUsers((prev) => [...prev, newUser]);
+    setRegisteredUsers((prev) => [newUser, ...prev]);
     setCurrentUser(newUser);
     return newUser;
   };
 
-  const switchRole = (role: Role) => {
-    if (MOCK_USERS[role]) {
-      setCurrentUser(MOCK_USERS[role]);
-    }
-  };
-
   const logout = () => {
     setCurrentUser(null);
+    localStorage.removeItem('civic_user');
+  };
+
+  const switchRole = (role: Role) => {
+    if (currentUser) {
+      const updated = { ...currentUser, role };
+      setCurrentUser(updated);
+    } else {
+      if (role === 'officer') setCurrentUser(MOCK_USERS.officer);
+      else if (role === 'worker') setCurrentUser(MOCK_USERS.worker);
+      else setCurrentUser(MOCK_USERS.citizen);
+    }
   };
 
   return (

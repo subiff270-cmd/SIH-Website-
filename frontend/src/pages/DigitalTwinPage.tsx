@@ -11,15 +11,27 @@ import {
   Layers, 
   X, 
   ArrowRight,
-  ShieldCheck
+  ShieldCheck,
+  Building,
+  Wrench,
+  Droplets,
+  Zap,
+  Trash2,
+  Shield,
+  PlusCircle,
+  Filter
 } from 'lucide-react';
 import { SmartCityCanvas } from '../components/3d/SmartCityCanvas';
+import { PredictiveAnalyticsWidget } from '../components/ai/PredictiveAnalyticsWidget';
 import { useIssues } from '../context/IssueContext';
+import { useAuth } from '../context/AuthContext';
 import { Complaint } from '../types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const DigitalTwinPage: React.FC = () => {
+  const navigate = useNavigate();
   const { complaints } = useIssues();
+  const { switchRole } = useAuth();
 
   // Controls State
   const [activeDeptFilter, setActiveDeptFilter] = useState<string>('ALL');
@@ -34,8 +46,24 @@ export const DigitalTwinPage: React.FC = () => {
   const handleEmergencyTrigger = () => {
     setEmergencyMode(true);
     const critical = complaints.find((c) => c.severity === 'CRITICAL') || complaints[0];
-    setSelectedComplaint(critical);
+    if (critical) setSelectedComplaint(critical);
   };
+
+  // Department metadata helper
+  const getDeptInfo = (buildingName: string) => {
+    if (buildingName.includes('Road') || buildingName.includes('PWD')) {
+      return { abbr: 'PWD', name: 'Public Works Dept', color: 'cyan', icon: Wrench, issues: 'Potholes, Road Cuts, Footpaths' };
+    }
+    if (buildingName.includes('Waste') || buildingName.includes('Solid')) {
+      return { abbr: 'SWM', name: 'Solid Waste Operations', color: 'emerald', icon: Trash2, issues: 'Garbage Spills, Dumping' };
+    }
+    if (buildingName.includes('Water') || buildingName.includes('Sewerage')) {
+      return { abbr: 'WSD', name: 'Water & Sewerage Board', color: 'blue', icon: Droplets, issues: 'Pipeline Leaks, Overflow' };
+    }
+    return { abbr: 'ELEC', name: 'Electrical & Lighting Division', color: 'amber', icon: Zap, issues: 'Street Lights, Transformers' };
+  };
+
+  const activeBuildingInfo = selectedDeptBuilding ? getDeptInfo(selectedDeptBuilding) : null;
 
   return (
     <div className="min-h-screen bg-[#080C14] text-slate-100 pt-28 pb-20 px-4 sm:px-6 lg:px-8">
@@ -52,7 +80,7 @@ export const DigitalTwinPage: React.FC = () => {
               3D Smart City Digital Twin
             </h1>
             <p className="text-xs text-slate-400 font-mono mt-1">
-              Explore 3D city buildings, traffic flow, department HQs, and live crowdsourced defect beacons.
+              Click 3D buildings & defect beacons to inspect telemetry, live camera photos & dispatch field workers.
             </p>
           </div>
 
@@ -127,15 +155,19 @@ export const DigitalTwinPage: React.FC = () => {
           />
         </div>
 
-        {/* Modal Inspections */}
+        {/* AI Predictive Infrastructure Analytics Widget */}
+        <PredictiveAnalyticsWidget />
+
+        {/* ═══ MODAL 1: COMPLAINT PIN INSPECTION MODAL ═══ */}
         <AnimatePresence>
           {selectedComplaint && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl" onClick={() => setSelectedComplaint(null)}>
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
-                className="w-full max-w-lg p-6 rounded-3xl bg-slate-900 border border-cyan-500/40 shadow-2xl space-y-4"
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-lg p-6 rounded-3xl bg-slate-900 border-2 border-cyan-500/40 shadow-glowCyan space-y-4"
               >
                 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                   <span className="text-xs font-mono px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
@@ -146,7 +178,12 @@ export const DigitalTwinPage: React.FC = () => {
                   </button>
                 </div>
 
-                <img src={selectedComplaint.imageUrl} alt={selectedComplaint.title} className="w-full h-44 object-cover rounded-2xl border border-slate-800" />
+                <div className="relative rounded-2xl overflow-hidden h-48 bg-slate-950 border border-slate-800">
+                  <img src={selectedComplaint.imageUrl} alt={selectedComplaint.title} className="w-full h-full object-cover" />
+                  <div className="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/90 text-cyan-300 text-xs font-mono font-bold border border-cyan-500/40 backdrop-blur-md">
+                    {selectedComplaint.category}
+                  </div>
+                </div>
 
                 <div>
                   <h3 className="text-lg font-bold text-white font-display">{selectedComplaint.title}</h3>
@@ -156,8 +193,85 @@ export const DigitalTwinPage: React.FC = () => {
                 <div className="grid grid-cols-2 gap-2 text-xs font-mono bg-slate-950 p-3 rounded-2xl border border-slate-800">
                   <div><span className="text-slate-400 block text-[10px]">CATEGORY</span><span className="text-cyan-300 font-bold">{selectedComplaint.category}</span></div>
                   <div><span className="text-slate-400 block text-[10px]">SEVERITY</span><span className="text-rose-400 font-bold">{selectedComplaint.severity}</span></div>
-                  <div><span className="text-slate-400 block text-[10px]">DEPARTMENT</span><span className="text-slate-200">{selectedComplaint.department.name}</span></div>
+                  <div><span className="text-slate-400 block text-[10px]">DEPARTMENT</span><span className="text-slate-200">{selectedComplaint.department?.name || 'Public Works'}</span></div>
                   <div><span className="text-slate-400 block text-[10px]">STATUS</span><span className="text-emerald-400 font-bold">{selectedComplaint.status}</span></div>
+                </div>
+
+                <div className="flex justify-end pt-2">
+                  <button onClick={() => setSelectedComplaint(null)} className="px-5 py-2 rounded-xl bg-cyan-500 text-black font-bold text-xs font-mono shadow-glowCyan">
+                    Close Inspection
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* ═══ MODAL 2: 3D DEPARTMENT BUILDING TELEMETRY MODAL ═══ */}
+        <AnimatePresence>
+          {selectedDeptBuilding && activeBuildingInfo && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-xl" onClick={() => setSelectedDeptBuilding(null)}>
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-lg p-6 rounded-3xl bg-slate-900 border-2 border-cyan-500/40 shadow-glowCyan space-y-5"
+              >
+                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
+                      <activeBuildingInfo.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-mono text-cyan-300 font-bold px-2 py-0.5 rounded bg-cyan-500/20 border border-cyan-500/30">
+                        3D BUILDING TELEMETRY ({activeBuildingInfo.abbr})
+                      </span>
+                      <h3 className="text-lg font-bold text-white font-display mt-0.5">{selectedDeptBuilding}</h3>
+                    </div>
+                  </div>
+                  <button onClick={() => setSelectedDeptBuilding(null)} className="text-slate-400 hover:text-white">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 font-mono text-center text-xs">
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-cyan-500/30">
+                    <span className="text-[9px] text-slate-400 block">ACTIVE BEACONS</span>
+                    <span className="text-base font-bold text-cyan-300">12 Defect Pins</span>
+                  </div>
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-emerald-500/30">
+                    <span className="text-[9px] text-slate-400 block">AVG SLA SPEED</span>
+                    <span className="text-base font-bold text-emerald-300">1.2 Days</span>
+                  </div>
+                  <div className="p-3 rounded-2xl bg-slate-950 border border-purple-500/30">
+                    <span className="text-[9px] text-slate-400 block">DISPATCHED CREWS</span>
+                    <span className="text-base font-bold text-purple-300">6 Crews</span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-300 font-mono bg-slate-950 p-3 rounded-xl border border-slate-800 leading-relaxed">
+                  <strong>Scope:</strong> {activeBuildingInfo.issues}. Real-time WebGL spatial telemetry connected to municipal headquarters.
+                </p>
+
+                <div className="pt-2 grid grid-cols-2 gap-3 font-mono text-xs">
+                  <button
+                    onClick={() => {
+                      setSelectedDeptBuilding(null);
+                      switchRole('officer');
+                      navigate('/dashboard/officer');
+                    }}
+                    className="btn-neon py-3 rounded-2xl bg-purple-600 text-white font-bold shadow-glowPurple flex items-center justify-center gap-2"
+                  >
+                    <Building className="w-4 h-4" /> Open Officer Portal
+                  </button>
+                  <Link
+                    to="/report"
+                    onClick={() => setSelectedDeptBuilding(null)}
+                    className="btn-neon py-3 rounded-2xl bg-cyan-500 text-black font-bold shadow-glowCyan flex items-center justify-center gap-2"
+                  >
+                    <PlusCircle className="w-4 h-4" /> Report New Issue
+                  </Link>
                 </div>
               </motion.div>
             </div>

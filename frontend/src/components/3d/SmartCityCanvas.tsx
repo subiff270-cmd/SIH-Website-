@@ -5,10 +5,11 @@ import { CityBuildings } from './CityBuildings';
 import { DroneSwarm } from './DroneSwarm';
 import { WeatherSystem } from './WeatherSystem';
 import { HolographicPanels } from './HolographicPanels';
+import { IssueMarkers3D } from './IssueMarkers3D';
 import { Complaint } from '../../types';
 
 interface SmartCityCanvasProps {
-  complaints: Complaint[];
+  complaints?: Complaint[];
   activeDepartmentFilter?: string;
   weather?: 'sunny' | 'rain' | 'storm' | 'fog';
   isNight?: boolean;
@@ -17,7 +18,7 @@ interface SmartCityCanvasProps {
 }
 
 export const SmartCityCanvas: React.FC<SmartCityCanvasProps> = ({
-  complaints,
+  complaints = [],
   activeDepartmentFilter = 'ALL',
   weather = 'sunny',
   isNight = true,
@@ -50,7 +51,14 @@ export const SmartCityCanvas: React.FC<SmartCityCanvasProps> = ({
             onSelectDepartmentBuilding={onSelectDepartmentBuilding}
           />
 
+          {complaints && complaints.length > 0 && (
+            <IssueMarkers3D complaints={complaints} onSelectComplaint={onSelectComplaint} />
+          )}
+
           <DroneSwarm />
+
+          {/* Holographic HUD Panels */}
+          <HolographicPanels />
         </Suspense>
 
         <OrbitControls
@@ -60,12 +68,10 @@ export const SmartCityCanvas: React.FC<SmartCityCanvasProps> = ({
           maxPolarAngle={Math.PI / 2 - 0.05}
           minDistance={10}
           maxDistance={60}
-          autoRotate={false}
-          autoRotateSpeed={0.5}
+          autoRotate={true}
+          autoRotateSpeed={1.0}
         />
       </Canvas>
-
-      <HolographicPanels />
     </div>
   );
 };
